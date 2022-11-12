@@ -96,13 +96,13 @@ class character
 		bool inspiration;
 		DEATH_SAVE death_save;
 		SAVING_THROWS saving_throws;
-		vector <ATRIBUTES> atributes[6];
+		vector <ATRIBUTES> atributes;
 		MONEY coin;
-		vector <SKILLS> skills[18];
-		vector <ATTACKS> attacks[4];
-		vector <OTHER_PROFICIENCY> other_proficiencyi[5];
+		vector <SKILLS> skills;
+		vector <ATTACKS> attacks;
+		vector <OTHER_PROFICIENCY> other_proficiencyi;
 		vector <ITEMS> items;
-		vector <FEATURES_TRAITS> features_and_traits[10];
+		vector <FEATURES_TRAITS> features_and_traits;
 	public:
 		character();
 		void set_name(string name);
