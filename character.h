@@ -4,11 +4,12 @@
 #define DEATH_SAVE_COUNT 3
 
 #include <string>
+#include <vector>
 
 struct
 {
-	bool success[DEATH_SAVE_COUNT] = false, false, false;
-	bool failures[DEATH_SAVE_COUNT] = false, false, false;
+	bool success[DEATH_SAVE_COUNT];
+	bool failures[DEATH_SAVE_COUNT];
 } DEATH_SAVE;
 
 struct
@@ -27,11 +28,11 @@ struct
 
 struct
 {
-	unsigned int CP = 0;
-	unsigned int SP = 0;
-	unsigned int ep = 0;
-	unsigned int gp = 0;
-	unsigned int pp = 0;
+	unsigned int CP;
+	unsigned int SP;
+	unsigned int ep;
+	unsigned int gp;
+	unsigned int pp;
 } MONEY;
 
 struct
@@ -95,13 +96,13 @@ class character
 		bool inspiration;
 		DEATH_SAVE death_save;
 		SAVING_THROWS saving_throws;
-		ATRIBUTES atributes[6];
+		vector <ATRIBUTES> atributes[6];
 		MONEY coin;
-		SKILLS skills[18];
-		ATTACKS attacks[4];
-		OTHER_PROFICIENCY other_proficiencyi[5];
-		ITEMS items;
-		FEATURES_TRAITS features_and_traits[10];
+		vector <SKILLS> skills[18];
+		vector <ATTACKS> attacks[4];
+		vector <OTHER_PROFICIENCY> other_proficiencyi[5];
+		vector <ITEMS> items;
+		vector <FEATURES_TRAITS> features_and_traits[10];
 	public:
 		character();
 		void set_name(string name);
