@@ -2,22 +2,23 @@
 #define __character__
 
 #define DEATH_SAVE_COUNT 3
+#define DEFAULT_ARR_SIZE 5
 
 #include <string>
-#include <vector>
+using namespace std;
 
-struct
+struct DEATH_SAVE
 {
 	bool success[DEATH_SAVE_COUNT];
 	bool failures[DEATH_SAVE_COUNT];
-} DEATH_SAVE;
+};
 
-struct
+struct SAVING_THROWS
 {
 	bool proficency;
 	int value;
 	string name;
-} SAVING_THROWS;
+};
 
 struct
 {
@@ -26,23 +27,23 @@ struct
 	string name;
 } ATRIBUTES;
 
-struct
+struct MONEY
 {
 	unsigned int CP;
 	unsigned int SP;
 	unsigned int ep;
 	unsigned int gp;
 	unsigned int pp;
-} MONEY;
+};
 
-struct
+struct SKILLS
 {
 	bool proficency;
 	unsigned int bonus;
 	string name;
-} SKILLS;
+};
 
-struct
+struct ATTACKS
 {
 	string name;
 	bool attack_dc;
@@ -50,29 +51,29 @@ struct
 	unsigned int dice_count;
 	unsigned int dice_type;
 	string damage_type;
-} ATTACKS;
+};
 
-struct
+struct OTHER_PROFICIENCEY
 {
 	string type;
 	string proficency;
-} OTHER_PROFICIENCEY;
+};
 
-struct
+struct ITEMS
 {
 	string item;
 	unsigned int count;
-	unsigned double weight;
-} ITEMS;
+	double weight;
+};
 
-struct
+struct FEATURES_TRAITS
 {
 	string name;
 	string source;
 	string source_type;
 	string about;
 	string char_class;
-} FEATURES_TRAITS;
+};
 
 class character
 {
@@ -94,15 +95,15 @@ class character
 		unsigned int proficiency_bonus;
 		unsigned int hit_die;
 		bool inspiration;
-		DEATH_SAVE death_save;
+		/* DEATH_SAVE death_save;
 		SAVING_THROWS saving_throws;
-		vector <ATRIBUTES> atributes;
+		ATRIBUTES atributes[DEFAULT_ARR_SIZE];
 		MONEY coin;
-		vector <SKILLS> skills;
-		vector <ATTACKS> attacks;
-		vector <OTHER_PROFICIENCY> other_proficiencyi;
-		vector <ITEMS> items;
-		vector <FEATURES_TRAITS> features_and_traits;
+		SKILLS skills[DEFAULT_ARR_SIZE];
+		ATTACKS attacks[DEFAULT_ARR_SIZE];
+		OTHER_PROFICIENCY other_proficiency[DEFAULT_ARR_SIZE];
+		ITEMS items[DEFAULT_ARR_SIZE];
+		FEATURES_TRAITS features_and_traits[DEFAULT_ARR_SIZE]; */
 	public:
 		character();
 		void set_name(string name);
@@ -121,15 +122,15 @@ class character
 		void set_speed(unsigned int speed);
 		void set_proficiency_bonus(unsigned int proficiency_bonus);
 		void set_hit_die(unsigned int hit_die);
-		void set_death_save();
+		/*void set_death_save();
 		void set_saving_throws();
-		void set_atributes(vector <ATRIBUTES> atributes);
-		void set_money(MONEY coin);
-		void set_skills(vector <SKILLS> skills);
-		void set_attacks(vector <ATTACKS> attacks);
-		void set_other_proficiency(vector <OTHER_PROFICIENCY> other_proficiency);
-		void set_items(vector <ITEMS items>);
-		void set_features_and_traits(vector <FEATURES_TRAITS> features_and_traits);
+		void set_atributes(ATRIBUTES atributes, unsigned int size);
+		void set_money(MONEY coin), unsigned int size;
+		void set_skills(SKILLS skills), unsigned int size;
+		void set_attacks(ATTACKS attacks), unsigned int size;
+		void set_other_proficiency(OTHER_PROFICIENCY other_proficiency), unsigned int size;
+		void set_items(ITEMS items), unsigned int size;
+		void set_features_and_traits(FEATURES_TRAITS features_and_traits), unsigned int size; */
 		void set_all(string name,
 			       	string race,
 				string char_class,
@@ -145,14 +146,14 @@ class character
 				unsigned int initiative,
 				unsigned int speed,
 				unsigned int proficiency_bonus,
-				unsigned int hit_die,
-				vector <ATRIBUTES> atributes,
-				vector <MONEY> coin,
-				vector <SKILLS> skills,
-				vector <ATTACKS> attacks,
-				vector <OTHER_PROFICIENCY> other proficiency,
-				vector <ITEMS> items,
-				vector <FEATIRES_TRAITS> features_and_traits);
+				unsigned int hit_die/*,
+				ATRIBUTES atributes,
+				MONEY coin,
+				SKILLS skills,
+				ATTACKS attacks,
+				OTHER_PROFICIENCY other proficiency,
+				ITEMS items,
+				FEATIRES_TRAITS features_and_traits*/);
 		void reset_death_save();
 		void load(string filepath);
 		void save(string filepath);
@@ -174,13 +175,13 @@ class character
 		unsigned int get_speed();
 		unsigned int get_proficiency_bonus();
 		unsigned int get_hit_die();
-		ATRIBUTES get_atributes();
+		/* ATRIBUTES get_atributes();
 		MONEY get_coin_count();
 		SKILlS get_skills();
 		ATTACKS get_attacks();
 		OTHER_PROFICIENCY get_other_proficiency();
 		ITEMS get_items();
-		FEATURES_TRAITS get_features_and_traits();
+		FEATURES_TRAITS get_features_and_traits(); */
 };
 
 #endif
