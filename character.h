@@ -123,13 +123,13 @@ class character
 		void set_hit_die(unsigned int hit_die);
 		void set_death_save();
 		void set_saving_throws();
-		void set_atributes(ATRIBUTES atributes, unsigned int number_of_atributes);
+		void set_atributes(vector <ATRIBUTES> atributes);
 		void set_money(MONEY coin);
-		void set_skills(SKILLS skills, unsigned int number_of_skills);
-		void set_attacks(ATTACKS attacks, unsigned int number_of_attacks);
-		void set_other_proficiency(OTHER_PROFICIENCY other_proficiency, unsigned int number_of_proficiencies);
-		void set_items(ITEMS items, unsigned int number_of_items);
-		void set_features_and_traits(FEATURES_TRAITS features_and_traits, unsigned int number_of_features);
+		void set_skills(vector <SKILLS> skills);
+		void set_attacks(vector <ATTACKS> attacks);
+		void set_other_proficiency(vector <OTHER_PROFICIENCY> other_proficiency);
+		void set_items(vector <ITEMS items>);
+		void set_features_and_traits(vector <FEATURES_TRAITS> features_and_traits);
 		void set_all(string name,
 			       	string race,
 				string char_class,
@@ -146,13 +146,13 @@ class character
 				unsigned int speed,
 				unsigned int proficiency_bonus,
 				unsigned int hit_die,
-				ATRIBUTES atributes, unsigned int number_of_atributes,
-				MONEY coin,
-				SKILLS skills, unsigned int number_of_skills,
-				ATTACKS attacks, unsigned int number_of_attacks,
-				OTHER_PROFICIENCY other proficiency, unsigned int number_of_proficiencies,
-				ITEMS items, unsigned int number_of_items,
-				FEATIRES_TRAITS features_and_traits, unsigned int number_of_features);
+				vector <ATRIBUTES> atributes,
+				vector <MONEY> coin,
+				vector <SKILLS> skills,
+				vector <ATTACKS> attacks,
+				vector <OTHER_PROFICIENCY> other proficiency,
+				vector <ITEMS> items,
+				vector <FEATIRES_TRAITS> features_and_traits);
 		void reset_death_save();
 		void load(string filepath);
 		void save(string filepath);
