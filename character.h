@@ -7,43 +7,43 @@
 #include <string>
 using namespace std;
 
-struct DEATH_SAVE
+struct DeathSave
 {
 	bool success[DEATH_SAVE_COUNT];
 	bool failures[DEATH_SAVE_COUNT];
 };
 
-struct SAVING_THROWS
+struct SavingThrows
 {
 	bool proficency;
 	int value;
 	string name;
 };
 
-struct
+struct Attributes
 {
 	unsigned int value;
 	bool proficency;
 	string name;
-} ATRIBUTES;
+};
 
-struct MONEY
+struct Money
 {
 	unsigned int CP;
 	unsigned int SP;
-	unsigned int ep;
-	unsigned int gp;
-	unsigned int pp;
+	unsigned int EP;
+	unsigned int GP;
+	unsigned int PP;
 };
 
-struct SKILLS
+struct Skills
 {
 	bool proficency;
 	unsigned int bonus;
 	string name;
 };
 
-struct ATTACKS
+struct Attacks
 {
 	string name;
 	bool attack_dc;
@@ -53,20 +53,20 @@ struct ATTACKS
 	string damage_type;
 };
 
-struct OTHER_PROFICIENCEY
+struct OtherProficiency
 {
 	string type;
 	string proficency;
 };
 
-struct ITEMS
+struct Items
 {
 	string item;
 	unsigned int count;
 	double weight;
 };
 
-struct FEATURES_TRAITS
+struct FeaturesTraits
 {
 	string name;
 	string source;
@@ -95,15 +95,15 @@ class character
 		unsigned int proficiency_bonus;
 		unsigned int hit_die;
 		bool inspiration;
-		/* DEATH_SAVE death_save;
-		SAVING_THROWS saving_throws;
-		ATRIBUTES atributes[DEFAULT_ARR_SIZE];
-		MONEY coin;
-		SKILLS skills[DEFAULT_ARR_SIZE];
-		ATTACKS attacks[DEFAULT_ARR_SIZE];
-		OTHER_PROFICIENCY other_proficiency[DEFAULT_ARR_SIZE];
-		ITEMS items[DEFAULT_ARR_SIZE];
-		FEATURES_TRAITS features_and_traits[DEFAULT_ARR_SIZE]; */
+		DeathSave death_save;
+		SavingThrows saving_throws;
+		Attributes atributes[DEFAULT_ARR_SIZE];
+		Money coin;
+		Skills skills[DEFAULT_ARR_SIZE];
+		Attacks attacks[DEFAULT_ARR_SIZE];
+		OtherProficiency other_proficiency[DEFAULT_ARR_SIZE];
+		Items items[DEFAULT_ARR_SIZE];
+		FeaturesTraits features_and_traits[DEFAULT_ARR_SIZE];
 	public:
 		character();
 		void set_name(string name);
@@ -122,15 +122,15 @@ class character
 		void set_speed(unsigned int speed);
 		void set_proficiency_bonus(unsigned int proficiency_bonus);
 		void set_hit_die(unsigned int hit_die);
-		/*void set_death_save();
+		void set_death_save();
 		void set_saving_throws();
-		void set_atributes(ATRIBUTES atributes, unsigned int size);
-		void set_money(MONEY coin), unsigned int size;
-		void set_skills(SKILLS skills), unsigned int size;
-		void set_attacks(ATTACKS attacks), unsigned int size;
-		void set_other_proficiency(OTHER_PROFICIENCY other_proficiency), unsigned int size;
-		void set_items(ITEMS items), unsigned int size;
-		void set_features_and_traits(FEATURES_TRAITS features_and_traits), unsigned int size; */
+		void set_atributes(Attributes atributes, unsigned int size);
+		void set_money(Money coin);
+		void set_skills(Skills skills, unsigned int size);
+		void set_attacks(Attacks attacks, unsigned int size);
+		void set_other_proficiency(OtherProficiency other_proficiency, unsigned int size);
+		void set_items(Items items, unsigned int size);
+		void set_features_and_traits(FeaturesTraits features_and_traits, unsigned int size);
 		void set_all(string name,
 			       	string race,
 				string char_class,
@@ -146,18 +146,24 @@ class character
 				unsigned int initiative,
 				unsigned int speed,
 				unsigned int proficiency_bonus,
-				unsigned int hit_die/*,
-				ATRIBUTES atributes,
-				MONEY coin,
-				SKILLS skills,
-				ATTACKS attacks,
-				OTHER_PROFICIENCY other proficiency,
-				ITEMS items,
-				FEATIRES_TRAITS features_and_traits*/);
+				unsigned int hit_die,
+				Attributes attributes,
+				unsigned int attribute_size,
+				Money coin,
+				Skills skills,
+				unsigned int skills_size,
+				Attacks attacks,
+				unsigned int attacks_size,
+				OtherProficiency other_proficiency,
+				unsigned int other_proficiency_size,
+				Items items,
+				unsigned int items_size,
+				FeaturesTraits features_and_traits,
+				unsigned int features_traits_size);
 		void reset_death_save();
 		void load(string filepath);
 		void save(string filepath);
-		void add_coin();
+		void add_coin(Money coin);
 		string get_name();
 		string get_race();
 		string get_char_class();
@@ -169,19 +175,19 @@ class character
 		string get_flaws();
 		bool get_inspiration();
 		unsigned int get_level();
-		unsigned int get_Experience();
+		unsigned int get_experience();
 		unsigned int get_armor_class();
 		unsigned int get_initiative();
 		unsigned int get_speed();
 		unsigned int get_proficiency_bonus();
 		unsigned int get_hit_die();
-		/* ATRIBUTES get_atributes();
-		MONEY get_coin_count();
-		SKILlS get_skills();
-		ATTACKS get_attacks();
-		OTHER_PROFICIENCY get_other_proficiency();
-		ITEMS get_items();
-		FEATURES_TRAITS get_features_and_traits(); */
+		Attributes get_atributes();
+		Money get_coin_count();
+		Skills get_skills();
+		Attacks get_attacks();
+		OtherProficiency get_other_proficiency();
+		Items get_items();
+		FeaturesTraits get_features_and_traits();
 };
 
 #endif
