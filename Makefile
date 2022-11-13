@@ -6,9 +6,9 @@ all: dnd
 	 
 dnd: main.o character.o
 	$(CXX) $(LDFLAGS) -o $@ $^
-main.o: main.cpp
+main.o: src/main.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-character.o: character.cpp character.h
+character.o: src/character.cpp src/character.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 		 
 clean:
