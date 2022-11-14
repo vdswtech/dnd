@@ -1,432 +1,442 @@
 #include "character.h"
 using namespace std;
 
-character::character()
+attack::attack()
 {
 	name = "";
-	race = "";
-	char_class = "";
-	background = "";
-	alignment = "";
-	traits = "";
-	ideals = "";
-	bonds = "";
-	flaws = "";
-	level = 1;
-	experience = 0;
-	armor_class = 0;
-	initiative = 0;
-	speed = 0;
-	proficiency_bonus = 0;
-	hit_die = 0;
-	inspiration = false;
-
-	coin.CP = 0;
-	coin.SP = 0;
-	coin.EP = 0;
-	coin.GP = 0;
-	coin.PP = 0;
-
-	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
-	{
-		death_save.success[i] = false;
-		death_save.failures[i] = false;
-	}
-
-	SavingThrows *saving_throws = new SavingThrows[DEFAULT_ARR_SIZE];
-	Attributes *attributes = new Attributes[DEFAULT_ARR_SIZE];
-	Skills *skills = new Skills[DEFAULT_ARR_SIZE];
-	Attacks *attacks = new Attacks[DEFAULT_ARR_SIZE];
-	OtherProficiency *other_proficiency = new OtherProficiency[DEFAULT_ARR_SIZE];
-	Items *items = new Items[DEFAULT_ARR_SIZE];
-	FeaturesTraits *features_and_traits = new FeaturesTraits[DEFAULT_ARR_SIZE];
-
-	for (unsigned int i=0; i<DEFAULT_ARR_SIZE; i++)
-	{
-		saving_throws[i].proficency = false;
-		saving_throws[i].value = 0;
-		saving_throws[i].name = "";
-		attributes[i].proficency = false;
-		attributes[i].value = 0;
-		attributes[i].name = "";
-		skills[i].proficency = false;
-		skills[i].bonus = 0;
-		skills[i].name = "";
-		attacks[i].name = "";
-		attacks[i].attack_dc = false;
-		attacks[i].attack = 0;
-		attacks[i].dice_count = 1;
-		attacks[i].dice_type=6;
-		attacks[i].damage_type = "";
-		other_proficiency[i].type = "";
-		other_proficiency[i].proficiency = "";
-		items[i].item = "";
-		items[i].count = 0;
-		items[i].weight = 0.0;
-		features_and_traits[i].name = "";
-		features_and_traits[i].source = "";
-		features_and_traits[i].source_type = "";
-		features_and_traits[i].about = "";
-		features_and_traits[i].char_class = "";
-	}
+	attack_dc = false;
+	atk = 0;
+	dice_count = 1;
+	dice_type = 20;
+	damage_type = "";
 }
 
-void character::set_name(string name)
+void attack::set_name(string name)
 {
 	this->name = name;
 }
 
-void character::set_race(string race)
+void attack::set_attack_dc(bool attack_dc)
 {
-	this->race = race;
+	this->attack_dc = attack_dc;
 }
 
-void character::set_character_class(string char_class)
+void attack::set_attack(unsigned int atk)
 {
-	this->char_class = char_class;
+	this->atk = atk;
 }
 
-void character::set_background(string background)
+void attack::set_dice_count(unsigned int dice_count)
 {
-	this->background = background;
+	this->dice_count = dice_count;
 }
 
-void character::set_alignment(string alignment)
+void attack::set_dice_type(unsigned int dice_type)
 {
-	this->alignment = alignment;
+	this->dice_type = dice_type;
 }
 
-void character::set_traits(string traits)
+void attack::set_damage_type(string damage_type)
 {
-	this->traits = traits;
+	this->damage_type = damage_type;
 }
 
-void character::set_ideals(string ideals)
-{
-	this->ideals = ideals;
-}
-
-void character::set_bonds(string bonds)
-{
-	this->bonds = bonds;
-}
-
-void character::set_flaws(string flaws)
-{
-	this->flaws = flaws;
-}
-
-void character::set_inspiration(bool inspiration)
-{
-	this->inspiration = inspiration;
-}
-
-void character::set_level(unsigned int level)
-{
-	this->level = level;
-}
-
-void character::set_experience(unsigned int experience)
-{
-	this->experience = experience;
-}
-
-void character::set_initative(unsigned int initiative)
-{
-	this->initiative = initiative;
-}
-
-void character::set_speed(unsigned int speed)
-{
-	this->speed = speed;
-}
-
-void character::set_proficiency_bonus(unsigned int proficiency_bonus)
-{
-	this->proficiency_bonus = proficiency_bonus;
-}
-
-void character::set_hit_die(unsigned int hit_die)
-{
-	this->hit_die = hit_die;
-}
-
-void character::set_death_save()
-{
-}
-
-void character::set_saving_throws()
-{
-}
-
-void character::set_attributes(Attributes *attributes, unsigned int size)
-{
-	this->attributes = new Attributes [size];
-	for (unsigned int i=0; i<size; i++)
-		this->skills[i] = skills[i];
-}
-
-void character::set_money(Money coin)
-{
-	this->coin.CP = coin.CP;
-	this->coin.SP = coin.SP;
-	this->coin.EP = coin.EP;
-	this->coin.GP = coin.GP;
-	this->coin.PP = coin.PP;
-}
-
-void character::set_skills(Skills *skills, unsigned int size)
-{
-	for (unsigned int i=0; i<size; i++)
-		this->skills[i] = skills[i];
-}
-
-void character::set_attacks(Attacks *attacks, unsigned int size)
-{
-	this->attacks = new Attacks[size];
-	for (unsigned int i=0; i<size; i++)
-		this->attacks[i] = attacks[i];
-}
-
-void character::set_other_proficiency(OtherProficiency *other_proficiency, unsigned int size)
-{
-	this->other_proficiency = new OtherProficiency[size];
-	for (unsigned int i=0; i<size; i++)
-		this->other_proficiency[i] = other_proficiency[i];
-}
-
-void character::set_items(Items *items, unsigned int size)
-{
-	this->items = new Items[size];
-	for (unsigned int i=0; i<size; i++)
-		this->items[i] = items[i];
-}
-
-void character::set_features_and_traits(FeaturesTraits *features_and_traits, unsigned int size)
-{
-	this->features_and_traits= new FeaturesTraits[size];
-	for (unsigned int i=0; i<size; i++)
-		this->features_and_traits[i] = features_and_traits[i];
-}
-
-void character::set_all(string name,
-		string race,
-		string char_class,
-		string background,
-		string alignment,
-		string traits,
-		string ideals,
-		string bonds,
-		string flaws,
-		bool inspiration,
-		unsigned int level,
-		unsigned int experience,
-		unsigned int initiative,
-		unsigned int speed,
-		unsigned int proficiency_bonus,
-		unsigned int hit_die,
-		Attributes *attributes,
-		unsigned int attribute_size,
-		Money coin,
-		Skills *skills,
-		unsigned int skills_size,
-		Attacks *attacks,
-		unsigned int attacks_size,
-		OtherProficiency *other_proficiency,
-		unsigned int other_proficiency_size,
-		Items *items,
-		unsigned int items_size,
-		FeaturesTraits *features_and_traits,
-		unsigned int features_traits_size)
-{
-	this->name = name;
-	this->race = race;
-	this->char_class = char_class;
-	this->background = background;
-	this->alignment = alignment;
-	this->traits = traits;
-	this->ideals = ideals;
-	this->bonds = bonds;
-	this->flaws = flaws;
-	this->inspiration = inspiration;
-	this->level = level;
-	this->experience = experience;
-	this->initiative = initiative;
-	this->speed = speed;
-	this->proficiency_bonus = proficiency_bonus;
-	this->hit_die = hit_die;
-	
-	this->attributes = new Attributes[attribute_size];
-	this->attacks = new Attacks[attacks_size];
-	this->other_proficiency = new OtherProficiency[other_proficiency_size];
-	this->items = new Items [items_size];
-	this->features_and_traits = new FeaturesTraits[features_traits_size];
-
-	delete attributes;
-	delete attacks;
-	delete other_proficiency;
-	delete items;
-	delete features_and_traits;
-
-	for (unsigned int i=0; i<attribute_size; i++)
-		this->attributes[i] = attributes[i];
-	for (unsigned int i=0; i<attacks_size; i++)
-		this->attacks[i] = attacks[i];
-	for (unsigned int i=0; i<other_proficiency_size; i++)
-		this->other_proficiency[i] = other_proficiency[i];
-	for (unsigned int i=0; i<items_size; i++)
-		this->items[i] = items[i];
-	for (unsigned int i=0; i<features_traits_size; i++)
-		this->features_and_traits[i] = features_and_traits[i];
-}
-
-void character::reset_death_save()
-{
-	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
-	{
-		this->death_save.success[i] = false;
-		this->death_save.failures[i] = false;
-	}
-}
-
-void character::load(string filepath)
-{
-}
-
-void character::save(string filepath)
-{
-}
-
-void character::add_coin(Money coin)
-{
-	this->coin.CP += coin.CP;
-	this->coin.SP += coin.SP;
-	this->coin.EP += coin.EP;
-	this->coin.GP += coin.GP;
-	this->coin.PP += coin.PP;
-}
-
-string character::get_name()
+string attack::get_name()
 {
 	return name;
 }
 
-string character::get_race()
+bool attack::get_attack_dc()
 {
-	return race;
+	return attack_dc;
 }
 
-string character::get_char_class()
+unsigned int attack::get_attack()
+{
+	return atk;
+}
+
+unsigned int attack::get_dice_count()
+{
+	return dice_count;
+}
+
+unsigned int attack::get_dice_type()
+{
+	return dice_type;
+}
+
+string attack::get_damage_type()
+{
+	return damage_type;
+}
+
+unsigned int attack::roll()
+{
+	unsigned int total = 0;
+
+	return total;
+}
+
+attributes::attributes()
+{
+	name = "";
+	proficiency = false;
+	value = 0;
+}
+
+void attributes::set_name(std::string name)
+{
+	this->name = name;
+}
+
+void attributes::set_proficiency(bool proficiency)
+{
+	this->proficiency = proficiency;
+}
+
+void attributes::set_value(int value)
+{
+	this->value = value;
+}
+
+std::string attributes::get_name()
+{
+	return name;
+}
+
+bool attributes::get_proficiency()
+{
+	return proficiency;
+}
+
+int attributes::get_value()
+{
+	return value;
+}
+
+deathsave::deathsave()
+{
+	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
+	{
+		success[i] = false;
+		failures[i] = false;
+	}
+}
+
+void deathsave::reset_success()
+{
+	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
+		success[i] = false;
+}
+
+void deathsave::reset_failures()
+{
+	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
+		failures[i] = false;
+}
+
+void deathsave::add_success()
+{
+	if (success[DEATH_SAVE_COUNT-1] == true)
+		throw std::runtime_error("Unable to throw another save");
+	for (int i=0; i<DEATH_SAVE_COUNT; i++)
+		if (success[i] == false)
+			success[i] = true;
+}
+
+void deathsave::add_failure()
+{
+	if (failures[DEATH_SAVE_COUNT-1] == true)
+		throw std::runtime_error("Unable to throw another save");
+	for (int i=0; i<DEATH_SAVE_COUNT; i++)
+		if (failures[i] == false)
+			failures[i] = true;
+}
+
+bool deathsave::can_save()
+{
+	if (success[DEATH_SAVE_COUNT-1] == false && failures[DEATH_SAVE_COUNT-1] == false)
+		return true;
+	return false;
+}
+
+featurestraits::featurestraits()
+{
+	name = "";
+	source = "";
+	source_type = "";
+	about = "";
+	char_class = "";
+}
+
+void featurestraits::set_name(string name)
+{
+	this->name = name;
+}
+
+void featurestraits::set_source(string source)
+{
+	this->source = source;
+}
+
+void featurestraits::set_source_type(string source_type)
+{
+	this->source_type = source_type;
+}
+
+void featurestraits::set_about(string about)
+{
+	this->about = about;
+}
+
+void featurestraits::set_char_class(string char_class)
+{
+	this->char_class = char_class;
+}
+
+string featurestraits::get_name()
+{
+	return name;
+}
+
+string featurestraits::get_source()
+{
+	return source;
+}
+
+string featurestraits::get_source_type()
+{
+	return source_type;
+}
+
+string featurestraits::get_about()
+{
+	return about;
+}
+
+string featurestraits::get_char_Class()
 {
 	return char_class;
 }
 
-string character::get_background()
+items::items()
 {
-	return background;
+	name = "";
+	count = 1;
+	weight = 1;
 }
 
-string character::get_alignment()
+void items::set_name(string name)
 {
-	return alignment;
+	this->name = name;
 }
 
-string character::get_traits()
+void items::set_count(unsigned int count)
 {
-	return traits;
+	this->count = count;
 }
 
-string character::get_ideals()
+void items::set_weight(double weight)
 {
-	return ideals;
+	this->weight = weight;
 }
 
-string character::get_bonds()
+string items::get_name()
 {
-	return bonds;
+	return name;
 }
 
-string character::get_flaws()
+unsigned int items::get_count()
 {
-	return flaws;
+	return count;
 }
 
-bool character::get_inspiration()
+double items::get_weight()
 {
-	return inspiration;
+	return weight;
 }
 
-unsigned int character::get_level()
+double items::get_total_weight()
 {
-	return level;
+	return count * weight;
 }
 
-unsigned int character::get_experience()
+money::money()
 {
-	return experience;
+	cp = 0;
+	sp = 0;
+	ep = 0;
+	gp = 0;
+	pp = 0;
 }
 
-unsigned int character::get_armor_class()
+void money::set_cp(unsigned int cp)
 {
-	return armor_class;
+	this->cp = cp;
 }
 
-unsigned int character::get_initiative()
+void money::set_sp(unsigned int sp)
 {
-	return initiative;
+	this->sp = sp;
 }
 
-unsigned int character::get_speed()
+void money::set_ep(unsigned int ep)
 {
-	return speed;
+	this->ep = ep;
 }
 
-unsigned int character::get_proficiency_bonus()
+void money::set_gp(unsigned int gp)
 {
-	return proficiency_bonus;
+	this->gp = gp;
 }
 
-unsigned int character::get_hit_die()
+void money::set_pp(unsigned int pp)
 {
-	return hit_die;
+	this->pp = pp;
 }
 
-SavingThrows *character::get_savingThrows()
+void money::operator=(money b)
 {
-	return saving_throws;
+	this->cp = b.get_cp();
+	this->sp = b.get_sp();
+	this->ep = b.get_ep();
+	this->gp = b.get_gp();
+	this->pp = b.get_pp();
 }
 
-Attributes *character::get_attributes()
+money *money::operator+(money b)
 {
-	return attributes;
+	this->cp = this->cp + b.get_cp();
+	this->sp = this->sp + b.get_sp();
+	this->ep = this->ep + b.get_ep();
+	this->gp = this->gp + b.get_gp();
+	this->pp = this->pp + b.get_pp();
+
+	return this;
 }
 
-Money character::get_coin_count()
+unsigned int money::get_cp()
 {
-	return coin;
+	return cp;
 }
 
-Skills *character::get_skills()
+unsigned int money::get_sp()
 {
-	return skills;
+	return sp;
 }
 
-Attacks *character::get_attacks()
+unsigned int money::get_ep()
 {
-	return attacks;
+	return ep;
 }
 
-OtherProficiency *character::get_other_proficiency()
+unsigned int money::get_gp()
 {
-	return other_proficiency;
+	return gp;
 }
 
-Items *character::get_items()
+unsigned int money::get_pp()
 {
-	return items;
+	return pp;
 }
 
-FeaturesTraits *character::get_features_and_traits()
+proficiency::proficiency()
 {
-	return features_and_traits;
+	type = "";
+	prof= "";
+}
+
+void proficiency::set_type(string type)
+{
+	this->type = type;
+}
+
+void proficiency::set_prof(string prof)
+{
+	this->prof= prof;
+}
+
+string proficiency::get_type()
+{
+	return type;
+}
+
+string proficiency::get_proficiency()
+{
+	return prof;
+}
+
+savingthrows::savingthrows()
+{
+	name = "";
+	proficiency = false;
+	value = 0;
+}
+
+void savingthrows::set_name(std::string name)
+{
+	this->name = name;
+}
+
+void savingthrows::set_proficiency(bool proficiency)
+{
+	this->proficiency = proficiency;
+}
+
+void savingthrows::set_value(int value)
+{
+	this->value = value;
+}
+
+std::string savingthrows::get_name()
+{
+	return name;
+}
+
+bool savingthrows::get_proficiency()
+{
+	return proficiency;
+}
+
+int savingthrows::get_value()
+{
+	return value;
+}
+
+skills::skills()
+{
+	name = "";
+	proficiency = false;
+	value = 0;
+}
+
+void skills::set_name(std::string name)
+{
+	this->name = name;
+}
+
+void skills::set_proficiency(bool proficiency)
+{
+	this->proficiency = proficiency;
+}
+
+void skills::set_value(int value)
+{
+	this->value = value;
+}
+
+std::string skills::get_name()
+{
+	return name;
+}
+
+bool skills::get_proficiency()
+{
+	return proficiency;
+}
+
+int skills::get_value()
+{
+	return value;
 }
