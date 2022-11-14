@@ -56,7 +56,7 @@ struct Attacks
 struct OtherProficiency
 {
 	string type;
-	string proficency;
+	string proficiency;
 };
 
 struct Items
@@ -96,14 +96,14 @@ class character
 		unsigned int hit_die;
 		bool inspiration;
 		DeathSave death_save;
-		SavingThrows saving_throws;
-		Attributes atributes[DEFAULT_ARR_SIZE];
+		SavingThrows *saving_throws;
+		Attributes *attributes;
 		Money coin;
-		Skills skills[DEFAULT_ARR_SIZE];
-		Attacks attacks[DEFAULT_ARR_SIZE];
-		OtherProficiency other_proficiency[DEFAULT_ARR_SIZE];
-		Items items[DEFAULT_ARR_SIZE];
-		FeaturesTraits features_and_traits[DEFAULT_ARR_SIZE];
+		Skills *skills;
+		Attacks *attacks;
+		OtherProficiency *other_proficiency;
+		Items *items;
+		FeaturesTraits *features_and_traits;
 	public:
 		character();
 		void set_name(string name);
@@ -124,13 +124,13 @@ class character
 		void set_hit_die(unsigned int hit_die);
 		void set_death_save();
 		void set_saving_throws();
-		void set_atributes(Attributes atributes, unsigned int size);
+		void set_attributes(Attributes *attributes, unsigned int size);
 		void set_money(Money coin);
-		void set_skills(Skills skills, unsigned int size);
-		void set_attacks(Attacks attacks, unsigned int size);
-		void set_other_proficiency(OtherProficiency other_proficiency, unsigned int size);
-		void set_items(Items items, unsigned int size);
-		void set_features_and_traits(FeaturesTraits features_and_traits, unsigned int size);
+		void set_skills(Skills *skills, unsigned int size);
+		void set_attacks(Attacks *attacks, unsigned int size);
+		void set_other_proficiency(OtherProficiency *other_proficiency, unsigned int size);
+		void set_items(Items *items, unsigned int size);
+		void set_features_and_traits(FeaturesTraits *features_and_traits, unsigned int size);
 		void set_all(string name,
 			       	string race,
 				string char_class,
@@ -147,18 +147,18 @@ class character
 				unsigned int speed,
 				unsigned int proficiency_bonus,
 				unsigned int hit_die,
-				Attributes attributes,
+				Attributes *attributes,
 				unsigned int attribute_size,
 				Money coin,
-				Skills skills,
+				Skills *skills,
 				unsigned int skills_size,
-				Attacks attacks,
+				Attacks *attacks,
 				unsigned int attacks_size,
-				OtherProficiency other_proficiency,
+				OtherProficiency *other_proficiency,
 				unsigned int other_proficiency_size,
-				Items items,
+				Items *items,
 				unsigned int items_size,
-				FeaturesTraits features_and_traits,
+				FeaturesTraits *features_and_traits,
 				unsigned int features_traits_size);
 		void reset_death_save();
 		void load(string filepath);
@@ -181,13 +181,14 @@ class character
 		unsigned int get_speed();
 		unsigned int get_proficiency_bonus();
 		unsigned int get_hit_die();
-		Attributes get_atributes();
+		SavingThrows *get_savingThrows();
+		Attributes *get_attributes();
 		Money get_coin_count();
-		Skills get_skills();
-		Attacks get_attacks();
-		OtherProficiency get_other_proficiency();
-		Items get_items();
-		FeaturesTraits get_features_and_traits();
+		Skills *get_skills();
+		Attacks *get_attacks();
+		OtherProficiency *get_other_proficiency();
+		Items *get_items();
+		FeaturesTraits *get_features_and_traits();
 };
 
 #endif

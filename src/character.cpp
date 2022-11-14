@@ -20,6 +20,55 @@ character::character()
 	proficiency_bonus = 0;
 	hit_die = 0;
 	inspiration = false;
+
+	coin.CP = 0;
+	coin.SP = 0;
+	coin.EP = 0;
+	coin.GP = 0;
+	coin.PP = 0;
+
+	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
+	{
+		death_save.success[i] = false;
+		death_save.failures[i] = false;
+	}
+
+	SavingThrows *saving_throws = new SavingThrows[DEFAULT_ARR_SIZE];
+	Attributes *attributes = new Attributes[DEFAULT_ARR_SIZE];
+	Skills *skills = new Skills[DEFAULT_ARR_SIZE];
+	Attacks *attacks = new Attacks[DEFAULT_ARR_SIZE];
+	OtherProficiency *other_proficiency = new OtherProficiency[DEFAULT_ARR_SIZE];
+	Items *items = new Items[DEFAULT_ARR_SIZE];
+	FeaturesTraits *features_and_traits = new FeaturesTraits[DEFAULT_ARR_SIZE];
+
+	for (unsigned int i=0; i<DEFAULT_ARR_SIZE; i++)
+	{
+		saving_throws[i].proficency = false;
+		saving_throws[i].value = 0;
+		saving_throws[i].name = "";
+		attributes[i].proficency = false;
+		attributes[i].value = 0;
+		attributes[i].name = "";
+		skills[i].proficency = false;
+		skills[i].bonus = 0;
+		skills[i].name = "";
+		attacks[i].name = "";
+		attacks[i].attack_dc = false;
+		attacks[i].attack = 0;
+		attacks[i].dice_count = 1;
+		attacks[i].dice_type=6;
+		attacks[i].damage_type = "";
+		other_proficiency[i].type = "";
+		other_proficiency[i].proficiency = "";
+		items[i].item = "";
+		items[i].count = 0;
+		items[i].weight = 0.0;
+		features_and_traits[i].name = "";
+		features_and_traits[i].source = "";
+		features_and_traits[i].source_type = "";
+		features_and_traits[i].about = "";
+		features_and_traits[i].char_class = "";
+	}
 }
 
 void character::set_name(string name)
@@ -110,8 +159,11 @@ void character::set_saving_throws()
 {
 }
 
-void character::set_atributes(Attributes atributes, unsigned int size)
+void character::set_attributes(Attributes *attributes, unsigned int size)
 {
+	this->attributes = new Attributes [size];
+	for (unsigned int i=0; i<size; i++)
+		this->skills[i] = skills[i];
 }
 
 void character::set_money(Money coin)
@@ -123,24 +175,38 @@ void character::set_money(Money coin)
 	this->coin.PP = coin.PP;
 }
 
-void character::set_skills(Skills skills, unsigned int size)
+void character::set_skills(Skills *skills, unsigned int size)
 {
+	for (unsigned int i=0; i<size; i++)
+		this->skills[i] = skills[i];
 }
 
-void character::set_attacks(Attacks attacks, unsigned int size)
+void character::set_attacks(Attacks *attacks, unsigned int size)
 {
+	this->attacks = new Attacks[size];
+	for (unsigned int i=0; i<size; i++)
+		this->attacks[i] = attacks[i];
 }
 
-void character::set_other_proficiency(OtherProficiency other_proficiency, unsigned int size)
+void character::set_other_proficiency(OtherProficiency *other_proficiency, unsigned int size)
 {
+	this->other_proficiency = new OtherProficiency[size];
+	for (unsigned int i=0; i<size; i++)
+		this->other_proficiency[i] = other_proficiency[i];
 }
 
-void character::set_items(Items items, unsigned int size)
+void character::set_items(Items *items, unsigned int size)
 {
+	this->items = new Items[size];
+	for (unsigned int i=0; i<size; i++)
+		this->items[i] = items[i];
 }
 
-void character::set_features_and_traits(FeaturesTraits features_and_traits, unsigned int size)
+void character::set_features_and_traits(FeaturesTraits *features_and_traits, unsigned int size)
 {
+	this->features_and_traits= new FeaturesTraits[size];
+	for (unsigned int i=0; i<size; i++)
+		this->features_and_traits[i] = features_and_traits[i];
 }
 
 void character::set_all(string name,
@@ -159,18 +225,18 @@ void character::set_all(string name,
 		unsigned int speed,
 		unsigned int proficiency_bonus,
 		unsigned int hit_die,
-		Attributes attributes,
+		Attributes *attributes,
 		unsigned int attribute_size,
 		Money coin,
-		Skills skills,
+		Skills *skills,
 		unsigned int skills_size,
-		Attacks attacks,
+		Attacks *attacks,
 		unsigned int attacks_size,
-		OtherProficiency other_proficiency,
+		OtherProficiency *other_proficiency,
 		unsigned int other_proficiency_size,
-		Items items,
+		Items *items,
 		unsigned int items_size,
-		FeaturesTraits features_and_traits,
+		FeaturesTraits *features_and_traits,
 		unsigned int features_traits_size)
 {
 	this->name = name;
@@ -189,15 +255,37 @@ void character::set_all(string name,
 	this->speed = speed;
 	this->proficiency_bonus = proficiency_bonus;
 	this->hit_die = hit_die;
+	
+	this->attributes = new Attributes[attribute_size];
+	this->attacks = new Attacks[attacks_size];
+	this->other_proficiency = new OtherProficiency[other_proficiency_size];
+	this->items = new Items [items_size];
+	this->features_and_traits = new FeaturesTraits[features_traits_size];
+
+	delete attributes;
+	delete attacks;
+	delete other_proficiency;
+	delete items;
+	delete features_and_traits;
+
+	for (unsigned int i=0; i<attribute_size; i++)
+		this->attributes[i] = attributes[i];
+	for (unsigned int i=0; i<attacks_size; i++)
+		this->attacks[i] = attacks[i];
+	for (unsigned int i=0; i<other_proficiency_size; i++)
+		this->other_proficiency[i] = other_proficiency[i];
+	for (unsigned int i=0; i<items_size; i++)
+		this->items[i] = items[i];
+	for (unsigned int i=0; i<features_traits_size; i++)
+		this->features_and_traits[i] = features_and_traits[i];
 }
 
 void character::reset_death_save()
 {
-#define DEATH_SAVE_COUNT 3
 	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
 	{
-		success[DEATH_SAVE_COUNT] = false;
-		failures[DEATH_SAVE_COUNT] = false;
+		this->death_save.success[i] = false;
+		this->death_save.failures[i] = false;
 	}
 }
 
@@ -303,37 +391,42 @@ unsigned int character::get_hit_die()
 	return hit_die;
 }
 
-Attributes character::get_atributes()
+SavingThrows *character::get_savingThrows()
 {
-	return atributes;
+	return saving_throws;
+}
+
+Attributes *character::get_attributes()
+{
+	return attributes;
 }
 
 Money character::get_coin_count()
 {
-	return coins;
+	return coin;
 }
 
-Skills character::get_skills()
+Skills *character::get_skills()
 {
 	return skills;
 }
 
-Attacks character::get_attacks()
+Attacks *character::get_attacks()
 {
 	return attacks;
 }
 
-OtherProficiency character::get_other_proficiency()
+OtherProficiency *character::get_other_proficiency()
 {
 	return other_proficiency;
 }
 
-Items character::get_items()
+Items *character::get_items()
 {
 	return items;
 }
 
-FeaturesTraits character::get_features_and_traits()
+FeaturesTraits *character::get_features_and_traits()
 {
 	return features_and_traits;
 }
