@@ -78,6 +78,18 @@ unsigned int attack::roll()
 	return total;
 }
 
+attack attack::operator=(attack tmp) const
+{
+	attack atk;
+	atk.set_name(tmp.get_name());
+	atk.set_attack_dc(tmp.get_attack_dc());
+	atk.set_attack(tmp.get_attack());
+	atk.set_dice_count(tmp.get_dice_count());
+	atk.set_dice_type(tmp.get_dice_type());
+	atk.set_damage_type(tmp.get_damage_type());
+	return atk;
+}
+
 attributes::attributes()
 {
 	name = "";
@@ -124,6 +136,18 @@ deathsave::deathsave()
 	}
 }
 
+void deathsave::set_success(bool *success, unsigned int count)
+{
+	for (unsigned int i=0; i<count; i++)
+		this->success[i] = success[i];
+}
+
+void deathsave::set_failures(bool *failures, unsigned int count)
+{
+	for (unsigned int i=0; i<count; i++)
+		this->failures[i] = failures[i];
+}
+
 void deathsave::reset_success()
 {
 	for (unsigned int i=0; i<DEATH_SAVE_COUNT; i++)
@@ -159,6 +183,16 @@ bool deathsave::can_save()
 	if (success[DEATH_SAVE_COUNT-1] == false && failures[DEATH_SAVE_COUNT-1] == false)
 		return true;
 	return false;
+}
+
+bool deathsave::get_success(unsigned int pos)
+{
+	return success[pos];
+}
+
+bool deathsave::get_failures(unsigned int pos)
+{
+	return failures[pos];
 }
 
 featurestraits::featurestraits()
@@ -215,7 +249,7 @@ string featurestraits::get_about()
 	return about;
 }
 
-string featurestraits::get_char_Class()
+string featurestraits::get_char_class()
 {
 	return char_class;
 }
@@ -260,6 +294,15 @@ double items::get_weight()
 double items::get_total_weight()
 {
 	return count * weight;
+}
+
+items items::operator=(items tmp) const
+{
+	items item;
+	item.set_name(tmp.get_name());
+	item.set_count(tmp.get_count());
+	item.set_weight(tmp.get_weight());
+	return item;
 }
 
 money::money()
@@ -439,4 +482,256 @@ bool skills::get_proficiency()
 int skills::get_value()
 {
 	return value;
+}
+
+skills skills::operator=(skills tmp_skill) const
+{
+	skills tmp;
+	tmp.set_name(tmp_skill.get_name());
+	tmp.set_proficiency(tmp_skill.get_proficiency());
+	tmp.set_value(tmp_skill.get_value());
+	return tmp;
+}
+
+character::character()
+{
+	name = "";
+	race = "";
+	char_class = "";
+	background = "";
+	alignment = "";
+	traits = "";
+	ideals = "";
+	bonds = "";
+	flaws = "";
+	level = 1;
+	experience = 0;
+	armor_class = 0;
+	initiative = 0;
+	speed = 0;
+	proficiency_bonus = 0;
+	hit_die = 0;
+	inspiration = false;
+}
+
+void character::set_name(string name)
+{
+	this->name = name;
+}
+
+void character::set_race(string race)
+{
+	this->race = race;
+}
+
+void character::set_character_class(string char_class)
+{
+	this->char_class = char_class;
+}
+
+void character::set_background(string background)
+{
+	this->background = background;
+}
+
+void character::set_alignment(string alignment)
+{
+	this->alignment = alignment;
+}
+
+void character::set_traits(string traits)
+{
+	this->traits = traits;
+}
+
+void character::set_ideals(string ideals)
+{
+	this->ideals = ideals;
+}
+
+void character::set_bonds(string bonds)
+{
+	this->bonds = bonds;
+}
+
+void character::set_flaws(string flaws)
+{
+	this->flaws = flaws;
+}
+
+void character::set_inspiration(bool inspiration)
+{
+	this->inspiration = inspiration;
+}
+
+void character::set_level(unsigned int level)
+{
+	this->level = level;
+}
+
+void character::set_experience(unsigned int experience)
+{
+	this->experience = experience;
+}
+
+void character::set_initative(unsigned int initiative)
+{
+	this->initiative = initiative;
+}
+
+void character::set_speed(unsigned int speed)
+{
+	this->speed = speed;
+}
+
+void character::set_proficiency_bonus(unsigned int proficiency_bonus)
+{
+	this->proficiency_bonus = proficiency_bonus;
+}
+
+void character::set_hit_die(unsigned int hit_die)
+{
+	this->hit_die = hit_die;
+}
+
+void character::load(string filepath)
+{
+}
+
+void character::save(string dirpath)
+{
+	string filepath = dirpath + "/" + name;
+	ofstream fout;
+	fout.open(filepath);
+
+	fout << "Name|" << name << endl;
+	fout << "Race|" << race<< endl;
+	fout << "Character Class|" << char_class << endl;
+	fout << "Background|" << background << endl;
+	fout << "Alignment|" << alignment << endl;
+	fout << "Traits|" << traits << endl;
+	fout << "Ideals|" << ideals << endl;
+	fout << "Bonds|" << bonds << endl;
+	fout << "Flaws|" << flaws << endl;
+	fout << "Level|" << level << endl;
+	fout << "Experience|" << experience << endl;
+	fout << "Armor Class|" << armor_class << endl;
+	fout << "Initiative|" << initiative << endl;
+	fout << "Speed|" << speed << endl;
+	fout << "Proficiency Bonus|" << proficiency_bonus << endl;
+	fout << "Hit Die|" << hit_die << endl;
+	fout << "Inspiration|" << inspiration << endl;
+
+	for (unsigned int i=0; i<atk.size(); i++)
+		fout << "Attack|" << atk[i].get_name() << "|" << atk[i].get_attack_dc() << "|" << atk[i].get_attack() << "|" << atk[i].get_dice_count() << "|" << atk[i].get_dice_type() <<"|" << atk[i].get_damage_type() << endl;
+	fout << "Attributes|" << attr.get_name() << "|" << attr.get_proficiency() << "|" << attr.get_value() << endl;
+	fout << "Death Saves|success&";
+	for (unsigned int i=0; i<DEATH_SAVE_COUNT-1; i++)
+		fout << saves.get_success(i) << "|";
+	fout << saves.get_success(DEATH_SAVE_COUNT-1) << endl;
+	fout << "Death Saves|failures&";
+	for (unsigned int i=0; i<DEATH_SAVE_COUNT-1; i++)
+		fout << saves.get_failures(i) << "|";
+	fout << saves.get_failures(DEATH_SAVE_COUNT-1) << endl;
+	fout << "Features and Traits|" << feattraits.get_name() << "|" << feattraits.get_source() << "|" << feattraits.get_source_type() << "|" << feattraits.get_about() << "|" << feattraits.get_char_class() << endl;
+	for (unsigned int i=0; i<item.size(); i++)
+		fout << "ITEM|" << item[i].get_name() << "|" << item[i].get_count() << "|"<< item[i].get_weight() << endl;
+	fout << "Coin|" << coin.get_cp() << "|" << coin.get_sp() << "|" << coin.get_ep() << "|" << coin.get_gp() << "|" << coin.get_pp() << endl;
+	fout << "Proficiency|" << prof.get_type() << "|" << prof.get_proficiency() << endl;
+	fout << "Saving Throws|" << throws.get_name() << "|" << throws.get_proficiency() << "|" << throws.get_value() << endl;
+	for (unsigned int i=0; i<skill.size(); i++)
+		fout << "Skills|" << skill[i].get_name() << "|" << skill[i].get_proficiency() << "|" << skill[i].get_value() << endl;
+
+	fout.close();
+}
+
+void character::levelup(unsigned int levels, unsigned int xp)
+{
+	level = level + levels;
+	experience = experience + xp;
+}
+
+string character::get_name()
+{
+	return name;
+}
+
+string character::get_race()
+{
+	return race;
+}
+
+string character::get_char_class()
+{
+	return char_class;
+}
+
+string character::get_background()
+{
+	return background;
+}
+
+string character::get_alignment()
+{
+	return alignment;
+}
+
+string character::get_traits()
+{
+	return traits;
+}
+
+string character::get_ideals()
+{
+	return ideals;
+}
+
+string character::get_bonds()
+{
+	return bonds;
+}
+
+string character::get_flaws()
+{
+	return flaws;
+}
+
+bool character::get_inspiration()
+{
+	return inspiration;
+}
+
+unsigned int character::get_level()
+{
+	return level;
+}
+
+unsigned int character::get_experience()
+{
+	return experience;
+}
+
+unsigned int character::get_armor_class()
+{
+	return armor_class;
+}
+
+unsigned int character::get_initiative()
+{
+	return initiative;
+}
+
+unsigned int character::get_speed()
+{
+	return speed;
+}
+
+unsigned int character::get_proficiency_bonus()
+{
+	return proficiency_bonus;
+}
+
+unsigned int character::get_hit_die()
+{
+	return hit_die;
 }

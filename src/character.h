@@ -5,6 +5,7 @@
 
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class attack
@@ -16,7 +17,7 @@ class attack
 		unsigned int dice_count;
 		unsigned int dice_type;
 		string damage_type;
-	private:
+	public:
 		attack();
 		void set_name(string name);
 		void set_attack_dc(bool attack_dc);
@@ -31,6 +32,7 @@ class attack
 		unsigned int get_dice_type();
 		string get_damage_type();
 		unsigned int roll();
+		attack operator=(attack tmp) const;
 };
 
 class attributes
@@ -56,11 +58,15 @@ class deathsave
 		bool failures[DEATH_SAVE_COUNT];
 	public:
 		deathsave();
+		void set_success(bool *success, unsigned int count);
+		void set_failures(bool *failures, unsigned int count);
 		void reset_success();
 		void reset_failures();
 		void add_success();
 		void add_failure();
 		bool can_save();
+		bool get_success(unsigned int pos);
+		bool get_failures(unsigned int pos);
 };
 
 class featurestraits
@@ -82,7 +88,7 @@ class featurestraits
 		string get_source();
 		string get_source_type();
 		string get_about();
-		string get_char_Class();
+		string get_char_class();
 };
 
 class items
@@ -100,6 +106,7 @@ class items
 		unsigned int get_count();
 		double get_weight();
 		double get_total_weight();
+		items operator=(items tmp) const;
 };
 
 class money
@@ -128,10 +135,10 @@ class money
 
 class proficiency
 {
-	public:
+	private:
 		string type;
 		string prof;
-	private:
+	public:
 		proficiency();
 		void set_type(string type);
 		void set_prof(string prof);
@@ -169,6 +176,7 @@ class skills
 		std::string get_name();
 		bool get_proficiency();
 		int get_value();
+		skills operator=(skills tmp_skill) const;
 };
 
 class character
@@ -191,6 +199,15 @@ class character
 		unsigned int proficiency_bonus;
 		unsigned int hit_die;
 		bool inspiration;
+		vector <attack> atk;
+		attributes attr;
+		deathsave saves;
+		featurestraits feattraits;
+		vector <items> item;
+		money coin;
+		proficiency prof;
+		savingthrows throws;
+		vector <skills> skill;
 	public:
 		character();
 		void set_name(string name);
@@ -209,25 +226,9 @@ class character
 		void set_speed(unsigned int speed);
 		void set_proficiency_bonus(unsigned int proficiency_bonus);
 		void set_hit_die(unsigned int hit_die);
-		void set_all(string name,
-			       	string race,
-				string char_class,
-				string background,
-				string alignment,
-				string traits,
-				string ideals,
-				string bonds,
-				string flaws,
-				bool inspiration,
-				unsigned int level,
-				unsigned int experience,
-				unsigned int initiative,
-				unsigned int speed,
-				unsigned int proficiency_bonus,
-				unsigned int hit_die);
-		void reset_death_save();
 		void load(string dirpath);
 		void save(string dirpath);
+		void levelup(unsigned int levels, unsigned int xp);
 		string get_name();
 		string get_race();
 		string get_char_class();
@@ -245,6 +246,15 @@ class character
 		unsigned int get_speed();
 		unsigned int get_proficiency_bonus();
 		unsigned int get_hit_die();
+		vector <attack> get_atk();
+		attributes get_attr();
+		deathsave get_saves();
+		featurestraits get_feattraits();
+		vector <items> get_item();
+		money get_coin();
+		proficiency get_prof();
+		savingthrows get_throws();
+		vector <skills> get_skill();
 };
 
 #endif
