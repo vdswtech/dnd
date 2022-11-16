@@ -4,13 +4,15 @@ CXX=g++
  
 all: dnd
 	 
-dnd: main.o character.o
+dnd: main.o character.o monsters.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 main.o: src/main.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 character.o: src/character.cpp src/character.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		 
+monsters.o: src/monsters.cpp src/monsters.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
 clean:
 	$(RM) dnd *.o
 .PHONY: clean all
