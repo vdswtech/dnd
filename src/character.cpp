@@ -71,9 +71,13 @@ string attack::get_damage_type()
 	return damage_type;
 }
 
-unsigned int attack::roll()
+unsigned int attack::roll(unsigned int dice, unsigned int pip)
 {
 	unsigned int total = 0;
+	srand (time(NULL));
+
+	for (unsigned int i=0; i<dice; i++)
+		total = total + rand() % pip;
 
 	return total;
 }
@@ -594,6 +598,51 @@ void character::set_hit_die(unsigned int hit_die)
 	this->hit_die = hit_die;
 }
 
+void character::set_atk(vector <attack> atk)
+{
+	this->atk = atk;
+}
+
+void character::set_attr(attributes attr)
+{
+	this->attr = attr;
+}
+
+void character::set_deathsave(deathsave saves)
+{
+	this->saves = saves;
+}
+
+void character::set_features(featurestraits feattraits)
+{
+	this->feattraits = feattraits;
+}
+
+void character::set_items(vector <items> item)
+{
+	this->item = item;
+}
+
+void character::set_money(money coin)
+{
+	this->coin = coin;
+}
+
+void character::set_prof(proficiency prof)
+{
+	this->prof = prof;
+}
+
+void character::set_saving_throws(savingthrows throws)
+{
+	this->throws = throws;
+}
+
+void character::set_skills(vector <skills> skill)
+{
+	this->skill = skill;
+}
+
 void character::load(string filepath)
 {
 }
@@ -734,4 +783,49 @@ unsigned int character::get_proficiency_bonus()
 unsigned int character::get_hit_die()
 {
 	return hit_die;
+}
+
+vector <attack> character::get_atk()
+{
+	return atk;
+}
+
+attributes character::get_attr()
+{
+	return attr;
+}
+
+deathsave character::get_saves()
+{
+	return saves;
+}
+
+featurestraits character::get_feattraits()
+{
+	return feattraits;
+}
+
+vector <items> character::get_item()
+{
+	return item;
+}
+
+money character::get_coin()
+{
+	return coin;
+}
+
+proficiency character::get_prof()
+{
+	return prof;
+}
+
+savingthrows character::get_throws()
+{
+	return throws;
+}
+
+vector <skills> character::get_skill()
+{
+	return skill;
 }

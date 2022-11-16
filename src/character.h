@@ -31,7 +31,7 @@ class attack
 		unsigned int get_dice_count();
 		unsigned int get_dice_type();
 		string get_damage_type();
-		unsigned int roll();
+		unsigned int roll(unsigned int dice, unsigned int pip);
 		attack operator=(attack tmp) const;
 };
 
@@ -226,6 +226,15 @@ class character
 		void set_speed(unsigned int speed);
 		void set_proficiency_bonus(unsigned int proficiency_bonus);
 		void set_hit_die(unsigned int hit_die);
+		void set_atk(vector <attack> atk);
+		void set_attr(attributes attr);
+		void set_deathsave(deathsave saves);
+		void set_features(featurestraits feattraits);
+		void set_items(vector <items> item);
+		void set_money(money coin);
+		void set_prof(proficiency prof);
+		void set_saving_throws(savingthrows throws);
+		void set_skills(vector <skills> skill);
 		void load(string dirpath);
 		void save(string dirpath);
 		void levelup(unsigned int levels, unsigned int xp);
