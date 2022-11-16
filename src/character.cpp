@@ -829,3 +829,36 @@ vector <skills> character::get_skill()
 {
 	return skill;
 }
+
+void character::add_attack(attack tmp)
+{
+	atk.push_back(tmp);
+}
+
+void character::add_attack(vector <attack> tmp)
+{
+	for (unsigned int i=0; i<tmp.size(); i++)
+		atk.push_back(tmp[i]);
+}
+
+void character::add_item(items tmp)
+{
+	item.push_back(tmp);
+}
+
+void character::add_item(vector <items> tmp)
+{
+	for (unsigned int i=0; i<tmp.size(); i++)
+		item.push_back(tmp[i]);
+}
+
+void character::add_skill(skills tmp)
+{
+	skill.push_back(tmp);
+}
+
+void character::add_skill(vector <skills> tmp)
+{
+	for (unsigned int i=0; i<tmp.size(); i++)
+		skill.push_back(tmp[i]);
+}

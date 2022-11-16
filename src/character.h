@@ -264,6 +264,12 @@ class character
 		proficiency get_prof();
 		savingthrows get_throws();
 		vector <skills> get_skill();
+		void add_attack(attack tmp);
+		void add_attack(vector <attack> tmp);
+		void add_item(items tmp);
+		void add_item(vector <items> tmp);
+		void add_skill(skills tmp);
+		void add_skill(vector <skills> tmp);
 };
 
 #endif
