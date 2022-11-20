@@ -1,0 +1,4 @@
+Name|
+Count|
+Price|
+Weight|
