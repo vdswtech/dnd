@@ -349,6 +349,7 @@ items::items()
 {
 	name = "";
 	count = 1;
+	price = 10;
 	weight = 1;
 }
 
@@ -360,6 +361,11 @@ void items::set_name(string name)
 void items::set_count(unsigned int count)
 {
 	this->count = count;
+}
+
+void items::set_price(unsigned int price)
+{
+	this->price = price;
 }
 
 void items::set_weight(double weight)
@@ -383,6 +389,8 @@ void items::load(string filepath)
 			name = split[1];
 		if (split[0] == "Count")
 			count = stoi(split[1]);
+		if (split[0] == "Price")
+			price = stoi(split[1]);
 		if (split[0] == "Attack")
 			weight = stod(split[1]);
 	}
@@ -394,6 +402,7 @@ void items::save(string filepath)
 	fout.open(filepath);
 	fout << "Name|" << name << endl;
 	fout << "Count|" << count << endl;
+	fout << "Price|" << price << endl;
 	fout << "Weight|" << weight << endl;
 	fout.close();
 }
@@ -406,6 +415,11 @@ string items::get_name()
 unsigned int items::get_count()
 {
 	return count;
+}
+
+unsigned int items::get_price()
+{
+	return price;
 }
 
 double items::get_weight()
@@ -763,6 +777,50 @@ void character::set_skills(vector <skills> skill)
 
 void character::load(string filepath)
 {
+	string tmp = "";
+	string data[2];
+	ifstream fin;
+	fin.open(filepath);
+	while (fin)
+	{
+		data[0] = tmp.substr(0, tmp.find('|'));
+		data[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
+		if (data[0] == "Name")
+			name = data[1];
+		if (data[0] == "Race")
+			race = data[1];
+		if (data[0] == "Character Class")
+			char_class = data[1];
+		if (data[0] == "Background")
+			background = data[1];
+		if (data[0] == "Alignment")
+			alignment = data[1];
+		if (data[0] == "Traits")
+			traits = data[1];
+		if (data[0] == "Ideals")
+			ideals = data[1];
+		if (data[0] == "Bonds")
+			bonds = data[1];
+		if (data[0] == "Flaws")
+			flaws = data[1];
+		if (data[0] == "Level")
+			level = stoi(data[1]);
+		if (data[0] == "Experience")
+			experience = stoi(data[1]);
+		if (data[0] == "Armor Class")
+			armor_class = stoi(data[1]);
+		if (data[0] == "Initiative")
+			initiative = stoi(data[1]);
+		if (data[0] == "Speed")
+			speed = stoi(data[1]);
+		if (data[0] == "Proficiency Bonus")
+			proficiency_bonus = stoi(data[1]);
+		if (data[0] == "Hit Die")
+			hit_die = stoi(data[1]);
+		if (data[0] == "Inspiration")
+			inspiration = stoi(data[1]);
+	}
+	fin.close();
 }
 
 void character::save(string dirpath)
@@ -790,24 +848,28 @@ void character::save(string dirpath)
 	fout << "Inspiration|" << inspiration << endl;
 
 	for (unsigned int i=0; i<atk.size(); i++)
-		fout << "Attack|" << atk[i].get_name() << "|" << atk[i].get_attack_dc() << "|" << atk[i].get_attack() << "|" << atk[i].get_dice_count() << "|" << atk[i].get_dice_type() <<"|" << atk[i].get_damage_type() << endl;
-	fout << "Attributes|" << attr.get_name() << "|" << attr.get_proficiency() << "|" << attr.get_value() << endl;
-	fout << "Death Saves|success&";
+		fout << "Attack|" << atk[i].get_name() << endl;
+	
+	fout << "Attributes|" << attr.get_name()  << endl;
+	
 	for (unsigned int i=0; i<DEATH_SAVE_COUNT-1; i++)
-		fout << saves.get_success(i) << "|";
+		fout << "Death save success|" << saves.get_success(i) << endl;
 	fout << saves.get_success(DEATH_SAVE_COUNT-1) << endl;
-	fout << "Death Saves|failures&";
+
 	for (unsigned int i=0; i<DEATH_SAVE_COUNT-1; i++)
-		fout << saves.get_failures(i) << "|";
+		fout << "Death save failures|" << saves.get_failures(i) << endl;
 	fout << saves.get_failures(DEATH_SAVE_COUNT-1) << endl;
-	fout << "Features and Traits|" << feattraits.get_name() << "|" << feattraits.get_source() << "|" << feattraits.get_source_type() << "|" << feattraits.get_about() << "|" << feattraits.get_char_class() << endl;
+	
+	fout << "Features and Traits|" << feattraits.get_name() << endl;
 	for (unsigned int i=0; i<item.size(); i++)
-		fout << "ITEM|" << item[i].get_name() << "|" << item[i].get_count() << "|"<< item[i].get_weight() << endl;
+		fout << "ITEM|" << item[i].get_name() << endl;
+	
 	fout << "Coin|" << coin.get_cp() << "|" << coin.get_sp() << "|" << coin.get_ep() << "|" << coin.get_gp() << "|" << coin.get_pp() << endl;
 	fout << "Proficiency|" << prof.get_type() << "|" << prof.get_proficiency() << endl;
 	fout << "Saving Throws|" << throws.get_name() << "|" << throws.get_proficiency() << "|" << throws.get_value() << endl;
+	
 	for (unsigned int i=0; i<skill.size(); i++)
-		fout << "Skills|" << skill[i].get_name() << "|" << skill[i].get_proficiency() << "|" << skill[i].get_value() << endl;
+		fout << "Skills|" << skill[i].get_name() << endl;
 
 	fout.close();
 }
