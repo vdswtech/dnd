@@ -1,6 +1,7 @@
 #ifndef __monsters__
 #define __monsters__
 
+#include <fstream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -48,6 +49,8 @@ class equipment
 		void set_name(string name);
 		void set_count(unsigned int count);
 		void set_weight(double weight);
+		void load(string filepath);
+		void save(string filepath);
 		string get_name();
 		unsigned int get_count();
 		double get_weight();
@@ -89,6 +92,8 @@ class action
 		void set_die_type(unsigned int die_type);
 		void set_modifier_amount(unsigned int modifier_amount);
 		void set_modifier_type(char modifier_type);
+		void load(string filename);
+		void save(string filename);
 		string get_name();
 		unsigned int get_dice();
 		unsigned int get_die_hit();
@@ -104,13 +109,39 @@ class monster
 	private:
 		string name;
 		string alignment;
+		string filepath;
 		vector <string> languages;
 		unsigned int armor_class;
 		size monster_size;
 		speed monster_speed;
-		equipment monster_equipment;
-		ability monster_ability;
+		vector <equipment> monster_equipment;
+		vector <ability> monster_ability;
+		bool alive;
 	public:
+		monster();
+		void set_name(string name);
+		void set_alignment(string alignment);
+		void set_filepath(string filepath);
+		void set_languages(vector <string> languages);
+		void set_armor_class(unsigned int armor_class);
+		void set_monster_size(size monster_size);
+		void set_monster_speed(speed monster_speed);
+		void set_monster_equipment(vector <equipment> monster_equipment);
+		void set_monster_ability(vector <ability> monster_ability);
+		void set_alive(bool alive);
+		void add_equipment(equipment monster_equipment);
+		void load(string filepath);
+		void save(string filepath);
+		string get_name();
+		string get_alignment();
+		vector <string> get_languages();
+		string get_filepath();
+		unsigned int get_armor_class();
+		size get_monster_size();
+		speed get_monster_speed();
+		vector <equipment> get_monster_equipment();
+		vector <ability> get_monster_ability();
+		bool is_alive();
 };
 
 #endif

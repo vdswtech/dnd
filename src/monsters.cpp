@@ -30,6 +30,10 @@ void size::set_space()
 		space = 5;
 	else if (type == "large")
 		space = 10;
+	else if (type == "huge")
+		space = 15;
+	else if (type == "gargantuan")
+		space = 20;
 	else
 		throw("Monster does not have a valid size: " + type);
 }
@@ -114,6 +118,37 @@ void equipment::set_count(unsigned int count)
 void equipment::set_weight(double weight)
 {
 	this->weight = weight;
+}
+
+void equipment::load(string filepath)
+{
+	string tmp;
+	string data[2];
+	ifstream fin;
+	fin.open(filepath);
+	while (fin)
+	{
+		fin >> tmp;
+		data[0] = tmp.substr(0, tmp.find('|'));
+		data[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
+		if (data[0] == "Name")
+			name = data[1];
+		if (data[0] == "Count")
+			count = stoi(data[1]);
+		if (data[0] == "Attack")
+			weight = stod(data[1]);
+	}
+	fin.close();
+}
+
+void equipment::save(string filepath)
+{
+	ofstream fout;
+	fout.open(filepath);
+	fout << "Name|" << name << endl;
+	fout << "Count|" << count << endl;
+	fout << "Weight|" << weight << endl;
+	fout.close();
 }
 
 string equipment::get_name()
@@ -232,6 +267,46 @@ void action::set_modifier_type(char modifier_type)
 	this->modifier_type = modifier_type;
 }
 
+void action::load(string filename)
+{
+	string tmp;
+	string data[2];
+	ifstream fin;
+	fin.open(filename);
+	while (fin)
+	{
+		fin >> tmp;
+		data[0] = tmp.substr(0, tmp.find('|'));
+		data[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
+		if (data[0] == "Name")
+			name = data[1];
+		if (data[0] == "Dice")
+			dice = stoi(data[1]);
+		if (data[0] == "Dice count")
+			die_hit = stoi(data[1]);
+		if (data[0] == "Dice type")
+			die_type = stoi(data[1]);
+		if (data[0] == "Modifier")
+			modifier_amount = stoi(data[1]);
+		if (data[0] == "Modifier type")
+			modifier_type = data[1][0];
+	}
+	fin.close();
+}
+
+void action::save(string filename)
+{
+	ofstream fout;
+	fout.open(filename);
+	fout << "Name|" << name << endl;
+	fout << "Dice|" << dice << endl;
+	fout << "Dice count|" << die_hit << endl;
+	fout << "Dice type|" << die_type << endl;
+	fout << "Modifier|" << modifier_amount << endl;
+	fout << "Modifier type|" << modifier_type << endl;
+	fout.close();
+}
+
 string action::get_name()
 {
 	return name;
@@ -274,7 +349,6 @@ unsigned int action::roll()
 		tmp = 0;
 		for (unsigned int i=0; i<die_hit; i++)
 			tmp = tmp + rand() % die_type;
-	
 		switch (modifier_type)
 		{
 			case '+':
@@ -290,7 +364,6 @@ unsigned int action::roll()
 				tmp = tmp / modifier_amount;
 				break;
 		}
-	
 		sum = sum + tmp;
 	}
 
@@ -307,4 +380,179 @@ action action::operator=(action tmp) const
 	tmp_action.modifier_amount = tmp.get_modifier_amount();
 	tmp_action.modifier_type = tmp.get_modifier_type();
 	return tmp_action;
+}
+
+monster::monster()
+{
+	name = "";
+	alignment = "";
+	armor_class = 0;
+	alive = true;
+}
+
+void monster::set_name(string name)
+{
+	this->name = name;
+}
+
+void monster::set_alignment(string alignment)
+{
+	this->alignment = alignment;
+}
+
+void monster::set_filepath(string filepath)
+{
+	this->filepath = filepath;
+}
+
+void monster::set_languages(vector <string> languages)
+{
+	for (unsigned int i=0; i<languages.size(); i++)
+		this->languages.push_back(languages[i]);
+}
+
+void monster::set_armor_class(unsigned int armor_class)
+{
+	this->armor_class = armor_class;
+}
+
+void monster::set_monster_size(size monster_size)
+{
+	this->monster_size = monster_size;
+}
+
+void monster::set_monster_speed(speed monster_speed)
+{
+	this->monster_speed = monster_speed;
+}
+
+void monster::set_monster_equipment(vector <equipment> monster_equipment)
+{
+	for (unsigned int i=0; i<monster_equipment.size(); i++)
+		this->monster_equipment.push_back(monster_equipment[i]);
+}
+
+void monster::set_monster_ability(vector <ability> monster_ability)
+{
+	for (unsigned int i=0; i<monster_ability.size(); i++)
+		this->monster_ability.push_back(monster_ability[i]);
+}
+
+void monster::set_alive(bool alive)
+{
+	this->alive = alive;
+}
+
+void monster::add_equipment(equipment monster_equipment)
+{
+	this->monster_equipment.push_back(monster_equipment);
+}
+
+void monster::load(string filepath)
+{
+	string tmp;
+	string lang_tmp;
+	string data[2];
+	ifstream fin;
+	fin.open(filepath);
+	while (fin)
+	{
+		fin >> tmp;
+		data[0] = tmp.substr(0, tmp.find('|'));
+		data[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
+		if (data[0] == "Name")
+			name = data[1];
+		if (data[0] == "Alignment")
+			alignment = data[1];
+		if (data[0] == "Languages")
+		{
+			lang_tmp = data[1];
+			for (unsigned int i=0; i<lang_tmp.length(); i=i+lang_tmp.find(',', tmp.length()))
+				languages.push_back(lang_tmp.substr(i, lang_tmp.find(',', tmp.length())));
+		}
+		if (data[0] == "Armor Class")
+			armor_class = stoi(data[1]);
+		if (data[0] == "Monster Size")
+			monster_size.set_space(stoi(data[1]));
+		if (data[0] == "Monster Speed")
+			monster_speed.set_rate(stoi(data[1]));
+		if (data[0] == "Alive")
+		{
+			if (data[1] == "0")
+				alive = true;
+			else
+				alive = false;
+		}
+	}
+	fin.close();
+}
+
+void monster::save(string filepath)
+{
+	ofstream fout;
+	fout.open(filepath);
+
+	
+	fout << "Name|" << name << endl;
+	fout << "Alignment|" << alignment << endl;
+	fout << "Languages|";
+	for (unsigned int i=0; i<languages.size()-1; i++)
+		fout << languages[i] << ",";
+	fout << languages[languages.size()-1] << endl;
+	fout << "Armor Class|" << armor_class << endl;
+	fout << "Monster Size|" << monster_size.get_space() << endl;
+	fout << "Monster Speed|" << monster_speed.get_rate() << endl;
+	fout << "Alive|" << alive << endl;
+
+	fout.close();
+}
+
+string monster::get_name()
+{
+	return name;
+}
+
+string monster::get_alignment()
+{
+	return alignment;
+}
+
+vector <string> monster::get_languages()
+{
+	return languages;
+}
+
+string monster::get_filepath()
+{
+	return filepath;
+}
+
+unsigned int monster::get_armor_class()
+{
+	return armor_class;
+}
+
+size monster::get_monster_size()
+{
+	return monster_size;
+}
+
+speed monster::get_monster_speed()
+{
+	return monster_speed;
+}
+
+vector <equipment> monster::get_monster_equipment()
+{
+	return monster_equipment;
+}
+
+vector <ability> monster::get_monster_ability()
+{
+	return monster_ability;
+}
+
+bool monster::is_alive()
+{
+	return alive;
 }

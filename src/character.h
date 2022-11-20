@@ -3,6 +3,8 @@
 
 #define DEATH_SAVE_COUNT 3
 
+#include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -25,6 +27,8 @@ class attack
 		void set_dice_count(unsigned int dice_count);
 		void set_dice_type(unsigned int dice_type);
 		void set_damage_type(string damage_type);
+		void load(string filepath);
+		void save(string filepath);
 		string get_name();
 		bool get_attack_dc();
 		unsigned int get_attack();
@@ -84,6 +88,8 @@ class featurestraits
 		void set_source_type(string source_type);
 		void set_about(string about);
 		void set_char_class(string char_class);
+		void load(string filepath);
+		void save(string filepath);
 		string get_name();
 		string get_source();
 		string get_source_type();
@@ -102,6 +108,8 @@ class items
 		void set_name(string name);
 		void set_count(unsigned int count);
 		void set_weight(double weight);
+		void load(string filepath);
+		void save(string filepath);
 		string get_name();
 		unsigned int get_count();
 		double get_weight();
@@ -238,6 +246,7 @@ class character
 		void load(string dirpath);
 		void save(string dirpath);
 		void levelup(unsigned int levels, unsigned int xp);
+		void display();
 		string get_name();
 		string get_race();
 		string get_char_class();

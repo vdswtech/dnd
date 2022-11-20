@@ -1,6 +1,8 @@
 #include "character.h"
 using namespace std;
 
+#define UNDERINE "\0333[4m"
+
 attack::attack()
 {
 	name = "";
@@ -39,6 +41,51 @@ void attack::set_dice_type(unsigned int dice_type)
 void attack::set_damage_type(string damage_type)
 {
 	this->damage_type = damage_type;
+}
+
+void attack::load(string filepath)
+{
+	string split[2];
+	string tmp;
+	ifstream fin;
+	fin.open(filepath);
+
+	while (fin)
+	{
+		fin >> tmp;
+		split[0] = tmp.substr(0, tmp.find('|'));
+		split[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
+
+		if (split[0] == "Name")
+			name = split[1];
+		if (split[0] == "Attack DC")
+			attack_dc = stoi(split[1]);
+		if (split[0] == "Attack")
+			atk = stoi(split[1]);
+		if (split[0] == "Dice count")
+			dice_count = stoi(split[1]);
+		if (split[0] == "Dice type")
+			dice_type = stoi(split[1]);
+		if (split[0] == "Damage type")
+			damage_type = split[1];
+	}
+
+	fin.close();
+}
+
+void attack::save(string filepath)
+{
+	ofstream fout;
+	fout.open(filepath);
+
+	fout << "Name|" << name << endl;
+	fout << "Attack DC|" << attack_dc << endl;
+	fout << "Attack|" << atk << endl;
+	fout << "Dice count|" << dice_count << endl;
+	fout << "Dice type|" << dice_type << endl;
+	fout << "Damage type|" << damage_type << endl;
+
+	fout.close();
 }
 
 string attack::get_name()
@@ -233,6 +280,46 @@ void featurestraits::set_char_class(string char_class)
 	this->char_class = char_class;
 }
 
+void featurestraits::load(string filepath)
+{
+	string split[2];
+	string tmp;
+	ifstream fin;
+	fin.open(filepath);
+
+	while (fin)
+	{
+		fin >> tmp;
+		split[0] = tmp.substr(0, tmp.find('|'));
+		split[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
+
+		if (split[0] == "Name")
+			name = split[1];
+		if (split[0] == "Source")
+			source = split[1];
+		if (split[0] == "Source type")
+			source_type = split[1];
+		if (split[0] == "About")
+			about = split[1];
+		if (split[0] == "Char class")
+			char_class = split[1];
+	}
+
+	fin.close();
+}
+
+void featurestraits::save(string filepath)
+{
+	ofstream fout;
+	fout.open(filepath);
+	fout << "Name|" << name << endl;
+	fout << "Source|" << source << endl;
+	fout << "Source type|" << source_type << endl;
+	fout << "About|" << about << endl;
+	fout << "Char class|" << char_class << endl;
+	fout.close();
+}
+
 string featurestraits::get_name()
 {
 	return name;
@@ -278,6 +365,37 @@ void items::set_count(unsigned int count)
 void items::set_weight(double weight)
 {
 	this->weight = weight;
+}
+
+void items::load(string filepath)
+{
+	string tmp;
+	string split[2];
+	ifstream fin;
+	fin.open(filepath);
+	while (fin)
+	{
+		fin >> tmp;
+		split[0] = tmp.substr(0, tmp.find('|'));
+		split[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
+
+		if (split[0] == "Name")
+			name = split[1];
+		if (split[0] == "Count")
+			count = stoi(split[1]);
+		if (split[0] == "Attack")
+			weight = stod(split[1]);
+	}
+}
+
+void items::save(string filepath)
+{
+	ofstream fout;
+	fout.open(filepath);
+	fout << "Name|" << name << endl;
+	fout << "Count|" << count << endl;
+	fout << "Weight|" << weight << endl;
+	fout.close();
 }
 
 string items::get_name()
@@ -698,6 +816,31 @@ void character::levelup(unsigned int levels, unsigned int xp)
 {
 	level = level + levels;
 	experience = experience + xp;
+}
+
+void character::display()
+{
+	cout << "Name: " << name << "(" << race << " " << char_class << ")" << "; Level " << level << "(" << experience << " XP)"<< endl;
+	cout << "Armor Class: " << armor_class << "; Initiative: " << initiative << "; Speed: " << speed << endl;
+	// cout << "Alignment: " << alignment << end;
+	cout << "Background: " << background << endl;
+	cout << "Traits: " << traits << endl;
+	cout << "Ideals: " << ideals << endl;
+	cout << "Bonds: " << bonds << endl;
+	cout << "Flaws: " << flaws;
+	cout << "Attacks: ";
+	for (unsigned int i=0; i<atk.size()-1; i++)
+		cout << atk[i].get_name() << ", ";
+	cout << atk[atk.size()-1].get_name() << endl;
+	cout << "Items: ";
+	for (unsigned int i=0; i<item.size()-1; i++)
+		cout << item[i].get_name() << ", ";
+	cout << item[item.size()-1].get_name() << endl;
+	cout << "Skills: ";
+	cout << "Money: " << coin.get_cp() << " CP, " << coin.get_sp() << " SP, " << coin.get_ep() << " EP, " << coin.get_gp() << " GP, " << coin.get_pp() << " GP" << endl;
+	for (unsigned int i=0; i<skill.size()-1; i++)
+		cout << skill[i].get_name() << ", ";
+	cout << skill[skill.size()-1].get_name() << endl;
 }
 
 string character::get_name()
