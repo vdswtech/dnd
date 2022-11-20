@@ -1,0 +1,4 @@
+Name|Airship
+Count|0
+Price|20000
+Weight|0
