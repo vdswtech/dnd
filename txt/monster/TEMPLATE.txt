@@ -1,0 +1,7 @@
+Name|
+Alignment|
+Languages|
+Armor Class|
+Monster Size|
+Monster Speed|
+Alive|
