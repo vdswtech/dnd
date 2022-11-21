@@ -1,4 +1,0 @@
-Name|Acid
-Count|0
-Price|25
-Weight|1

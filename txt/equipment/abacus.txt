@@ -1,4 +1,0 @@
-Name|Abacus
-Count|0
-Price|25
-Weight|1
