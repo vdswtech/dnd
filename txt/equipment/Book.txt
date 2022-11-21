@@ -1,0 +1,3 @@
+Name|Book
+Price|25
+Weight|5

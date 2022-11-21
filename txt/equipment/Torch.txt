@@ -1,0 +1,3 @@
+Name|Torch
+Price|0.01
+Weight|1

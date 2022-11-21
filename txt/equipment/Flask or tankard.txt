@@ -1,0 +1,3 @@
+Name|Flask or tankard
+Price|0.02
+Weight|1

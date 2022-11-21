@@ -1,0 +1,3 @@
+Name|Blowgun needles (50)
+Price|1
+Weight|1

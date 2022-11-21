@@ -1,0 +1,3 @@
+Name|Piton
+Price|0.05
+Weight|0.25

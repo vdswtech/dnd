@@ -1,0 +1,3 @@
+Name|Hammer, sledge
+Price|2
+Weight|10

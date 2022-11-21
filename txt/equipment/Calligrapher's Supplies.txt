@@ -1,0 +1,3 @@
+Name|Calligrapher's Supplies
+Price|10
+Weight|5

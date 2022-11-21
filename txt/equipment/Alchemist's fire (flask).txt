@@ -1,0 +1,3 @@
+Name|Alchemist's fire (flask)
+Price|50
+Weight|1

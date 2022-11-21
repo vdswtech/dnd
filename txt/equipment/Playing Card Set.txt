@@ -1,0 +1,3 @@
+Name|Playing Card Set
+Price|5
+Weight|0

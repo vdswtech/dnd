@@ -1,0 +1,3 @@
+Name|Navigator's Tools
+Price|25
+Weight|2

@@ -1,0 +1,3 @@
+Name|Cartographer's Tools
+Price|15
+Weight|6

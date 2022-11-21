@@ -1,0 +1,3 @@
+Name|Mason's Tools
+Price|10
+Weight|8

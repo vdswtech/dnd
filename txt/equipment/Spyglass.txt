@@ -1,0 +1,3 @@
+Name|Spyglass
+Price|1000
+Weight|1

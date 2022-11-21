@@ -1,0 +1,3 @@
+Name|Abacus
+Price|2
+Weight|2

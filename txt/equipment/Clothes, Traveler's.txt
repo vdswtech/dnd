@@ -1,0 +1,3 @@
+Name|Clothes, Traveler's
+Price|2
+Weight|4

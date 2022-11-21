@@ -1,0 +1,3 @@
+Name|Fishing tackle
+Price|1
+Weight|4

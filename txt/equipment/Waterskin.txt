@@ -1,0 +1,3 @@
+Name|Waterskin
+Price|0.2
+Weight|5

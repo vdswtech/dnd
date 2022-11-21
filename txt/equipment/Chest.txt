@@ -1,0 +1,3 @@
+Name|Chest
+Price|5
+Weight|25

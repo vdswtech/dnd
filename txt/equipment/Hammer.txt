@@ -1,0 +1,3 @@
+Name|Hammer
+Price|1
+Weight|3

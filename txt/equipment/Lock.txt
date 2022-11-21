@@ -1,0 +1,3 @@
+Name|Lock
+Price|10
+Weight|1

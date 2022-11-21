@@ -1,0 +1,3 @@
+Name|Bucket
+Price|0.05
+Weight|2

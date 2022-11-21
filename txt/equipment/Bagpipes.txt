@@ -1,0 +1,3 @@
+Name|Bagpipes
+Price|30
+Weight|6

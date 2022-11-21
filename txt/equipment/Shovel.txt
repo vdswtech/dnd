@@ -1,0 +1,3 @@
+Name|Shovel
+Price|2
+Weight|5

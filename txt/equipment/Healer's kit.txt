@@ -1,0 +1,3 @@
+Name|Healer's kit
+Price|5
+Weight|3

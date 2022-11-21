@@ -1,0 +1,3 @@
+Name|Jug or pitcher
+Price|0.02
+Weight|4

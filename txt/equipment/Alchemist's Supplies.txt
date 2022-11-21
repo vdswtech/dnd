@@ -1,0 +1,3 @@
+Name|Alchemist's Supplies
+Price|50
+Weight|8

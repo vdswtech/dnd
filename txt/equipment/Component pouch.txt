@@ -1,0 +1,3 @@
+Name|Component pouch
+Price|25
+Weight|2

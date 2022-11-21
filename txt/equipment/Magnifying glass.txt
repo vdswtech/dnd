@@ -1,0 +1,3 @@
+Name|Magnifying glass
+Price|100
+Weight|0

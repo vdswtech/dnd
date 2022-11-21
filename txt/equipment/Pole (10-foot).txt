@@ -1,0 +1,3 @@
+Name|Pole (10-foot)
+Price|0.05
+Weight|7

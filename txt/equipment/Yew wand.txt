@@ -1,0 +1,3 @@
+Name|Yew wand
+Price|10
+Weight|1

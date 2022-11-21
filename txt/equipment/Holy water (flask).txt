@@ -1,0 +1,3 @@
+Name|Holy water (flask)
+Price|25
+Weight|1

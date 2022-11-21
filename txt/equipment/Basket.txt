@@ -1,0 +1,3 @@
+Name|Basket
+Price|0.4
+Weight|2

@@ -1,0 +1,3 @@
+Name|Arrows (20)
+Price|1
+Weight|1

@@ -1,0 +1,3 @@
+Name|Climber's kit
+Price|25
+Weight|12

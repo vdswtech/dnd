@@ -1,0 +1,3 @@
+Name|Forgery Kit
+Price|15
+Weight|5

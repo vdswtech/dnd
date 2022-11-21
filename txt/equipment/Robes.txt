@@ -1,0 +1,3 @@
+Name|Robes
+Price|1
+Weight|4

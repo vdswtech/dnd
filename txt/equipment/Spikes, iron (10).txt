@@ -1,0 +1,3 @@
+Name|Spikes, iron (10)
+Price|1
+Weight|5

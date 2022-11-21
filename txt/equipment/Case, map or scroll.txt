@@ -1,0 +1,3 @@
+Name|Case, map or scroll
+Price|1
+Weight|1

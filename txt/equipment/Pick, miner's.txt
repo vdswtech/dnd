@@ -1,0 +1,3 @@
+Name|Pick, miner's
+Price|2
+Weight|10

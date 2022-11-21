@@ -1,0 +1,3 @@
+Name|Holy Symbol (Emblem)
+Price|5
+Weight|0

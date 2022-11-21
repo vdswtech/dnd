@@ -1,0 +1,3 @@
+Name|Viol
+Price|30
+Weight|1

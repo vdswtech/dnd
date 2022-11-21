@@ -1,0 +1,3 @@
+Name|Hunting trap
+Price|5
+Weight|25

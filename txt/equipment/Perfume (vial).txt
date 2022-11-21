@@ -1,0 +1,3 @@
+Name|Perfume (vial)
+Price|5
+Weight|0

@@ -1,0 +1,3 @@
+Name|Hourglass
+Price|25
+Weight|1

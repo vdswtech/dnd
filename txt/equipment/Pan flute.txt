@@ -1,0 +1,3 @@
+Name|Pan flute
+Price|12
+Weight|2

@@ -1,0 +1,3 @@
+Name|Grappling hook
+Price|2
+Weight|4

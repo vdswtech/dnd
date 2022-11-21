@@ -1,0 +1,3 @@
+Name|Sprig of mistletoe
+Price|1
+Weight|0

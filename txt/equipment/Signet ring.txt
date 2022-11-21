@@ -1,0 +1,3 @@
+Name|Signet ring
+Price|5
+Weight|0

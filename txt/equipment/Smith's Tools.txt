@@ -1,0 +1,3 @@
+Name|Smith's Tools
+Price|20
+Weight|8

@@ -1,0 +1,3 @@
+Name|Tent, two-person
+Price|2
+Weight|20

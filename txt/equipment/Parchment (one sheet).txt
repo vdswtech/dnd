@@ -1,0 +1,3 @@
+Name|Parchment (one sheet)
+Price|0.1
+Weight|0
