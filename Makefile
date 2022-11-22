@@ -1,4 +1,4 @@
-CXXFLAGS=-std=c++14 -O2 -g -Wall -Werror -fPIC -fstack-protector-strong -Wformat-security -D_FORTIFY_SOURCE=2
+CXXFLAGS=-std=c++17 -O2 -g -Wall -Werror -fPIC -fstack-protector-strong -Wformat-security -D_FORTIFY_SOURCE=2
 LDFLAGS=-pie -Wl,-z,relro -Wl,-z,now
 CXX=g++
  
