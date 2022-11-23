@@ -1,6 +1,6 @@
 #include "attack.h"
 
-attack()
+attack::attack()
 {
 	name = "";
 	atk = "";
@@ -76,7 +76,7 @@ unsigned int attack::get_die_count()
 
 unsigned int attack::get_die_type()
 {
-	return die_type();
+	return die_type;
 }
 
 unsigned int attack::get_modifier()
@@ -111,4 +111,5 @@ unsigned int attack::roll()
 				break;
 		}
 	}
+	return total;
 }

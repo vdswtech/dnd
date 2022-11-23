@@ -35,17 +35,16 @@ void equipment::load(string filepath)
 	fin.open(filepath);
 	while (fin)
 	{
-		fin >> tmp;
+		getline(fin, tmp);
 		data[0] = tmp.substr(0, tmp.find('|'));
-		data[1] = tmp.substr(tmp.find('|') + 1, tmp.length());
 		if (data[0] == "Name")
-			name = data[1];
+			name = tmp.substr(tmp.find('|')+1, tmp.length());
 		if (data[0] == "Count")
-			count = stoi(data[1]);
+			count = stoi(tmp.substr(tmp.find('|')+1, tmp.length()));
 		if (data[0] == "Price")
-			price = stoi(data[1]);
-		if (data[0] == "Attack")
-			weight = stod(data[1]);
+			price = stoi(tmp.substr(tmp.find('|')+1, tmp.length()));
+		if (data[0] == "Weight")
+			weight = stoi(tmp.substr(tmp.find('|')+1, tmp.length()));
 	}
 	fin.close();
 }
