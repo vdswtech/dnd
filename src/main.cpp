@@ -11,8 +11,8 @@ int main(int argc, char *argv[])
 {
 	vector <equipment> items;
 
-	string path = "/home/daemoneye/Documents/code/cpp/dnd/txt/equipment";
-	load_equipment(path, &items);
+	string equipment_path = "/home/daemoneye/Documents/code/cpp/dnd/txt/equipment";
+	load_equipment(equipment_path, &items);
 	return 0;
 }
 
@@ -26,3 +26,4 @@ void load_equipment(string directory, vector <equipment> *items)
 		items->push_back(tmp);
 	}
 }
+
