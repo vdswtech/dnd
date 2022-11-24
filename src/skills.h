@@ -2,6 +2,7 @@
 #define __skills__
 
 #include <string>
+using namespace std;
 
 class skills
 {
