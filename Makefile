@@ -4,7 +4,7 @@ CXX=g++
  
 all: dnd
 	 
-dnd: main.o attack.o equipment.o features_traits.o money.o
+dnd: main.o attack.o equipment.o features_traits.o money.o skills.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 main.o: src/main.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
@@ -15,6 +15,8 @@ equipment.o: src/equipment.cpp src/equipment.h
 features_traits.o: src/features_traits.cpp src/features_traits.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 money.o: src/money.cpp src/money.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+skills.o: src/skills.cpp src/skills.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
