@@ -2,7 +2,7 @@
 
 character::character()
 {
-	char_name = "";
+	name = "";
 	char_class = "";
 	background = "";
 	race = "";
@@ -18,11 +18,12 @@ character::character()
 	initiative = 0;
 	speed = 0;
 	hit_die = 0;
+	coin.set_all(0, 0, 0, 0, 0);
 }
 
 void character::set_name(string name)
 {
-	this->char_name = name;
+	this->name = name;
 }
 
 void character::set_char_class(string char_class)
@@ -100,6 +101,16 @@ void character::set_hit_die(unsigned int hit_die)
 	this->hit_die = hit_die;
 }
 
+void character::load_equipment(string directory)
+{
+	equipment tmp;
+	for (const auto & entry : fs::directory_iterator(directory))
+	{
+		tmp.load(entry.path());
+		item_list.push_back(tmp);
+	}
+}
+
 void character::load(string filepath)
 {
 	ifstream fin;
@@ -112,7 +123,7 @@ void character::load(string filepath)
 	data[1] = tmp.substr(tmp.find('|')+1, tmp.length());
 
 	if (data[0] == "Name")
-		char_name = data[1];
+		name = data[1];
 	if (data[0] == "Character class")
 		char_class = data[1];
 	if (data[0] == "Background")
@@ -152,7 +163,7 @@ void character::save(string filepath)
 	ofstream fout;
 	fout.open(filepath);
 
-	fout << "Name|" << char_name << endl;
+	fout << "Name|" << name << endl;
 	fout << "Character class|" << char_class << endl;
 	fout << "Background|" << background << endl;
 	fout << "Race|" << race << endl;
@@ -174,7 +185,7 @@ void character::save(string filepath)
 
 string character::get_name()
 {
-	return char_name;
+	return name;
 }
 
 string character::get_char_class()
@@ -250,4 +261,14 @@ unsigned int character::get_speed()
 unsigned int character::get_hit_die()
 {
 	return hit_die;
+}
+
+vector <equipment> character::get_equipment_list()
+{
+	return item_list;
+}
+
+money character::get_money_count()
+{
+	return coin;
 }

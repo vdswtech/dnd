@@ -1,18 +1,21 @@
 #ifndef __character__
 #define __character__
 
+#include <filesystem>
 #include <string>
+#include <vector>
 #include "attack.h"
 #include "equipment.h"
 #include "features_traits.h"
 #include "money.h"
 #include "skills.h"
 using namespace std;
+namespace fs = std::filesystem;
 
 class character
 {
 	private:
-		string char_name;
+		string name;
 		string char_class;
 		string background;
 		string race;
@@ -28,6 +31,8 @@ class character
 		unsigned int initiative;
 		unsigned int speed;
 		unsigned int hit_die;
+		vector <equipment> item_list;
+		money coin;
 	public:
 		character();
 		void set_name(string name);
@@ -46,6 +51,7 @@ class character
 		void set_initiative(unsigned int initiative);
 		void set_speed(unsigned int speed);
 		void set_hit_die(unsigned int hit_die);
+		void load_equipment(string directory);
 		void load(string filepath);
 		void save(string filepath);
 		string get_name();
@@ -64,6 +70,8 @@ class character
 		unsigned int get_initiative();
 		unsigned int get_speed();
 		unsigned int get_hit_die();
+		vector <equipment> get_equipment_list();
+		money get_money_count();
 };
 
 #endif
