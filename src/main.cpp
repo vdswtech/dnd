@@ -1,3 +1,4 @@
+#include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -14,16 +15,29 @@ void display_languages(vector <string> *languages);
 
 int main(int argc, char *argv[])
 {
-	string equipment_path = "/home/daemoneye/Documents/code/cpp/dnd/txt/equipment";
-	string languages_path = "/home/daemoneye/Documents/code/cpp/dnd/txt/languages.txt";
+	string equipment_path;
+	string languages_path;
+	for (int i=0; i<argc; ++i)
+	{
+		if (strcmp(argv[i], "-e") == 0 || strcmp(argv[i], "--equipment") == 0)
+			equipment_path = argv[i+1];
+		if (strcmp(argv[i], "-l") == 0 || strcmp(argv[i], "--languages") == 0)
+			languages_path = argv[i+1];
+	}
 
 	vector <equipment> items;
 	vector <string> languages;
 
-	load_items(equipment_path, &items);
-	load_languages(languages_path, &languages);
-	display_items(&items);
-	display_languages(&languages);
+	if (equipment_path != "")
+	{
+		load_items(equipment_path, &items);
+		display_items(&items);
+	}
+	if (languages_path != "")
+	{
+		load_languages(languages_path, &languages);
+		display_languages(&languages);
+	}
 
 	return 0;
 }
