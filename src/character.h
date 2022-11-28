@@ -31,6 +31,9 @@ class character
 		unsigned int initiative;
 		unsigned int speed;
 		unsigned int hit_die;
+		unsigned int proficiency_bonus;
+		bool inspiration;
+		bool death_saves[2][3];
 		vector <equipment> item_list;
 		money coin;
 	public:
@@ -51,6 +54,9 @@ class character
 		void set_initiative(unsigned int initiative);
 		void set_speed(unsigned int speed);
 		void set_hit_die(unsigned int hit_die);
+		void set_proficiency_bonus(unsigned int proficiency_bonus);
+		void set_inspiration(bool inspiration);
+		void set_death_save(bool **death_saves);
 		void load_equipment(string directory);
 		void load(string filepath);
 		void save(string filepath);
@@ -70,6 +76,8 @@ class character
 		unsigned int get_initiative();
 		unsigned int get_speed();
 		unsigned int get_hit_die();
+		unsigned int get_proficiency_bonus();
+		bool get_inspiration();
 		vector <equipment> get_equipment_list();
 		money get_money_count();
 };

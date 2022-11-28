@@ -18,6 +18,11 @@ character::character()
 	initiative = 0;
 	speed = 0;
 	hit_die = 0;
+	proficiency_bonus = 0;
+	inspiration = false;
+	for (unsigned int i=0; i<2; i++)
+		for (unsigned int j=0; j<3; j++)
+			death_saves[i][j] = false;
 	coin.set_all(0, 0, 0, 0, 0);
 }
 
@@ -109,6 +114,23 @@ void character::load_equipment(string directory)
 		tmp.load(entry.path());
 		item_list.push_back(tmp);
 	}
+}
+
+void character::set_proficiency_bonus(unsigned int proficiency_bonus)
+{
+	this->proficiency_bonus = proficiency_bonus;
+}
+
+void character::set_inspiration(bool inspiration)
+{
+	this->inspiration = inspiration;
+}
+
+void character::set_death_save(bool **death_saves)
+{
+	for (unsigned int i=0; i<2; i++)
+		for (unsigned int j=0; j<3; j++)
+			this->death_saves[i][j] = death_saves[i][j];
 }
 
 void character::load(string filepath)
@@ -261,6 +283,16 @@ unsigned int character::get_speed()
 unsigned int character::get_hit_die()
 {
 	return hit_die;
+}
+
+unsigned int character::get_proficiency_bonus()
+{
+	return proficiency_bonus;
+}
+
+bool character::get_inspiration()
+{
+	return inspiration;
 }
 
 vector <equipment> character::get_equipment_list()
