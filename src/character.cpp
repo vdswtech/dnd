@@ -126,11 +126,24 @@ void character::set_inspiration(bool inspiration)
 	this->inspiration = inspiration;
 }
 
-void character::set_death_save(bool **death_saves)
+void character::load_languages(vector <string> *languages)
 {
-	for (unsigned int i=0; i<2; i++)
-		for (unsigned int j=0; j<3; j++)
-			this->death_saves[i][j] = death_saves[i][j];
+	for (unsigned int i=0; i<languages->size(); i++)
+		this->languages.push_back(languages->at(i));
+}
+
+void character::add_language(string language)
+{
+	languages.push_back(language);
+}
+
+void character::remove_language(string language)
+{
+	vector <string> tmp;
+	for (unsigned int i=0; i<languages.size(); i++)
+		if (languages[i] != language)
+			tmp.push_back(languages[i]);
+	languages = tmp;
 }
 
 void character::load(string filepath)

@@ -35,6 +35,7 @@ class character
 		bool inspiration;
 		bool death_saves[2][3];
 		vector <equipment> item_list;
+		vector <string> languages;
 		money coin;
 	public:
 		character();
@@ -56,8 +57,10 @@ class character
 		void set_hit_die(unsigned int hit_die);
 		void set_proficiency_bonus(unsigned int proficiency_bonus);
 		void set_inspiration(bool inspiration);
-		void set_death_save(bool **death_saves);
 		void load_equipment(string directory);
+		void load_languages(vector <string> *languages);
+		void add_language(string language);
+		void remove_language(string language);
 		void load(string filepath);
 		void save(string filepath);
 		string get_name();
