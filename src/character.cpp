@@ -24,6 +24,24 @@ character::character()
 		for (unsigned int j=0; j<3; j++)
 			death_saves[i][j] = false;
 	coin.set_all(0, 0, 0, 0, 0);
+	modifiers[0].name = "Strength";
+	modifiers[0].modifier = 0;
+	modifiers[0].value = 0;
+	modifiers[1].name = "Dexterity";
+	modifiers[1].modifier = 0;
+	modifiers[1].value = 0;
+	modifiers[2].name = "Consitution";
+	modifiers[2].modifier = 0;
+	modifiers[2].value = 0;
+	modifiers[3].name = "Intellegence";
+	modifiers[3].modifier = 0;
+	modifiers[3].value = 0;
+	modifiers[4].name = "Wisdom";
+	modifiers[4].modifier = 0;
+	modifiers[4].value = 0;
+	modifiers[5].name = "Charisma";
+	modifiers[5].modifier = 0;
+	modifiers[5].value = 0;
 }
 
 void character::set_name(string name)
@@ -308,9 +326,14 @@ bool character::get_inspiration()
 	return inspiration;
 }
 
-vector <equipment> character::get_equipment_list()
+vector <equipment> *character::get_equipment_list()
 {
-	return item_list;
+	return &item_list;
+}
+
+vector <string> *character::get_languages()
+{
+	return &languages;
 }
 
 money character::get_money_count()

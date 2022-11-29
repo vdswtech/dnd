@@ -2,6 +2,7 @@
 #define __character__
 
 #include <filesystem>
+#include <map>
 #include <string>
 #include <vector>
 #include "attack.h"
@@ -11,6 +12,13 @@
 #include "skills.h"
 using namespace std;
 namespace fs = std::filesystem;
+
+struct Mods
+{
+	string name;
+	int modifier;
+	unsigned int value;
+};
 
 class character
 {
@@ -37,6 +45,7 @@ class character
 		vector <equipment> item_list;
 		vector <string> languages;
 		money coin;
+		Mods modifiers[6];
 	public:
 		character();
 		void set_name(string name);
@@ -81,7 +90,8 @@ class character
 		unsigned int get_hit_die();
 		unsigned int get_proficiency_bonus();
 		bool get_inspiration();
-		vector <equipment> get_equipment_list();
+		vector <equipment> *get_equipment_list();
+		vector <string> *get_languages();
 		money get_money_count();
 };
 
