@@ -2,7 +2,6 @@
 #define __character__
 
 #include <filesystem>
-#include <map>
 #include <string>
 #include <vector>
 #include "attack.h"

@@ -225,6 +225,10 @@ void character::save(string filepath)
 	fout << "Initiative|" << initiative << endl;
 	fout << "Speed|" << speed << endl;
 	fout << "Hit die|" << hit_die << endl;
+	for (unsigned int i=0; i<item_list.size(); i++)
+		fout << "Item|" << item_list[i].get_name() << endl;
+	for (unsigned int i=0; i<languages.size(); i++)
+		fout << languages[i] << endl;
 
 	fout.close();
 }
