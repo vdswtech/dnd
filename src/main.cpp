@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <ncurses.h>
 #include <string>
 #include <vector>
 #include "character.h"
