@@ -11,8 +11,6 @@ namespace fs = std::filesystem;
 
 void load_items(string path, vector <equipment> *items);
 void load_languages(string path, vector <string> *languages);
-void display_items(vector <equipment> *items);
-void display_languages(vector <string> *languages);
 
 int main(int argc, char *argv[])
 {
@@ -64,16 +62,4 @@ void load_languages(string path, vector <string> *languages)
 		languages->push_back(language);
 	}
 	fin.close();
-}
-
-void display_items(vector <equipment> *items)
-{
-	for (unsigned int i=0; i<items->size(); i++)
-		cout << items->at(i).get_name() << " costs " << items->at(i).get_price() << " and weighs " << items->at(i).get_weight() << endl;
-}
-
-void display_languages(vector <string> *languages)
-{
-	for (unsigned int i=0; i<languages->size(); i++)
-		cout << languages->at(i) << endl;
 }
