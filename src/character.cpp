@@ -200,6 +200,8 @@ void character::load(string filepath)
 		speed = stoi(data[1]);
 	if (data[0] == "Hit Die")
 		hit_die = stoi(data[1]);
+	if (data[0] == "Language")
+		languages.push_back(data[1]);
 	
 	fin.close();
 }
@@ -228,7 +230,7 @@ void character::save(string filepath)
 	for (unsigned int i=0; i<item_list.size(); i++)
 		fout << "Item|" << item_list[i].get_name() << endl;
 	for (unsigned int i=0; i<languages.size(); i++)
-		fout << languages[i] << endl;
+		fout << "Language|" << languages[i] << endl;
 
 	fout.close();
 }

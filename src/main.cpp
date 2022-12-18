@@ -28,15 +28,9 @@ int main(int argc, char *argv[])
 	vector <string> languages;
 
 	if (equipment_path != "")
-	{
 		load_items(equipment_path, &items);
-		display_items(&items);
-	}
 	if (languages_path != "")
-	{
 		load_languages(languages_path, &languages);
-		display_languages(&languages);
-	}
 
 	return 0;
 }
