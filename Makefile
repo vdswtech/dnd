@@ -1,5 +1,6 @@
 CXXFLAGS=-std=c++17 -O2 -g -Wall -Werror -fPIC -fstack-protector-strong -Wformat-security -D_FORTIFY_SOURCE=2
 LDFLAGS=-pie -Wl,-z,relro -Wl,-z,now
+TESTFLAGS=-lgtest -lgtest_main -pthread
 CXX=g++
  
 all: dnd
@@ -21,6 +22,9 @@ skills.o: src/skills.cpp src/skills.h
 character.o: src/character.cpp src/character.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+test: src/money.cpp src/tests.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(TESTFLAGS)
+
 clean:
-	$(RM) dnd *.o
+	$(RM) dnd test *.o
 .PHONY: clean all
