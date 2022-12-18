@@ -4,7 +4,6 @@ TESTFLAGS=-lgtest -lgtest_main -pthread
 CXX=g++
  
 all: dnd
-	 
 dnd: main.o character.o attack.o equipment.o features_traits.o money.o skills.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 main.o: src/main.cpp
@@ -21,7 +20,6 @@ skills.o: src/skills.cpp src/skills.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 character.o: src/character.cpp src/character.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-
 test: src/money.cpp src/tests.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(TESTFLAGS)
 
