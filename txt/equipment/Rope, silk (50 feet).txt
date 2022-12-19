@@ -1,3 +1,0 @@
-Name|Rope, silk (50 feet)
-Price|10
-Weight|5

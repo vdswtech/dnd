@@ -1,3 +1,0 @@
-Name|Whetstone
-Price|0.01
-Weight|1

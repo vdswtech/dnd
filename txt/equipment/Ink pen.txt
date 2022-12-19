@@ -1,3 +1,0 @@
-Name|Ink pen
-Price|0.02
-Weight|0

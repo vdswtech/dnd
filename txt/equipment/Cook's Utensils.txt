@@ -1,3 +1,0 @@
-Name|Cook's Utensils
-Price|1
-Weight|8

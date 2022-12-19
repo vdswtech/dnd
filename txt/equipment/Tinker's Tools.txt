@@ -1,3 +1,0 @@
-Name|Tinker's Tools
-Price|50
-Weight|10

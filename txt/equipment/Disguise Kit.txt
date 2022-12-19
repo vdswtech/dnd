@@ -1,3 +1,0 @@
-Name|Disguise Kit
-Price|25
-Weight|3

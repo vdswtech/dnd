@@ -1,3 +1,0 @@
-Name|Poisoner's Kit
-Price|50
-Weight|2

@@ -1,3 +1,0 @@
-Name|Holy Symbol (Amulet)
-Price|5
-Weight|1

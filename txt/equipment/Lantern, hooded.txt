@@ -1,3 +1,0 @@
-Name|Lantern, hooded
-Price|5
-Weight|2

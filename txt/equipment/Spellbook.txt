@@ -1,3 +1,0 @@
-Name|Spellbook
-Price|50
-Weight|3

@@ -1,3 +1,0 @@
-Name|Mess kit
-Price|0.2
-Weight|1

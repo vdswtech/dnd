@@ -1,3 +1,0 @@
-Name|Pouch
-Price|0.5
-Weight|1

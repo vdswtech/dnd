@@ -1,3 +1,0 @@
-Name|Painter's Supplies
-Price|10
-Weight|5

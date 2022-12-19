@@ -1,3 +1,0 @@
-Name|Mirror, steel
-Price|5
-Weight|0.5

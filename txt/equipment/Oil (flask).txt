@@ -1,3 +1,0 @@
-Name|Oil (flask)
-Price|0.1
-Weight|1

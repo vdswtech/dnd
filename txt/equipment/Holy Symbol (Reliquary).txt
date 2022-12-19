@@ -1,3 +1,0 @@
-Name|Holy Symbol (Reliquary)
-Price|5
-Weight|2

@@ -1,3 +1,0 @@
-Name|Scale, merchant's
-Price|5
-Weight|3

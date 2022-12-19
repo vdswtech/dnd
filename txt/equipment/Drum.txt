@@ -1,3 +1,0 @@
-Name|Drum
-Price|6
-Weight|3

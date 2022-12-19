@@ -1,3 +1,0 @@
-Name|Bottle, glass
-Price|2
-Weight|2

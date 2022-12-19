@@ -1,3 +1,0 @@
-Name|Clothes, Costume
-Price|5
-Weight|4

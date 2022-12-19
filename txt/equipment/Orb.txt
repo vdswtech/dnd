@@ -1,3 +1,0 @@
-Name|Orb
-Price|20
-Weight|3

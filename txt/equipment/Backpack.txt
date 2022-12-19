@@ -1,3 +1,0 @@
-Name|Backpack
-Price|2
-Weight|5

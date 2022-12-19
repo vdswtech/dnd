@@ -1,3 +1,0 @@
-Name|Chain (10 feet)
-Price|5
-Weight|10

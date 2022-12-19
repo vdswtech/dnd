@@ -1,3 +1,0 @@
-Name|Ram, portable
-Price|4
-Weight|35

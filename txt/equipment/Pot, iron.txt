@@ -1,3 +1,0 @@
-Name|Pot, iron
-Price|2
-Weight|10

@@ -1,3 +1,0 @@
-Name|Rations (1 day)
-Price|0.5
-Weight|2

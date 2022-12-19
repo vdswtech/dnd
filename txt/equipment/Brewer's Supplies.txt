@@ -1,3 +1,0 @@
-Name|Brewer's Supplies
-Price|20
-Weight|9

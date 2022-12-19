@@ -1,3 +1,0 @@
-Name|Caltrops (bag of 20)
-Price|1
-Weight|2

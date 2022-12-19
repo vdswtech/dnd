@@ -1,3 +1,0 @@
-Name|Thieves' Tools
-Price|25
-Weight|1

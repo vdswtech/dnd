@@ -1,3 +1,0 @@
-Name|Antitoxin (vial)
-Price|50
-Weight|0

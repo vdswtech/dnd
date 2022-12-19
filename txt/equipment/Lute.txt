@@ -1,3 +1,0 @@
-Name|Lute
-Price|35
-Weight|2

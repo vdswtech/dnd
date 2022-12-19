@@ -5,9 +5,9 @@ CXX=g++
  
 all: dnd
 dnd: main.o character.o attack.o equipment.o features_traits.o money.o skills.o
-	$(CXX) $(LDFLAGS) -o $@ $^
+	$(CXX) $(LDFLAGS) -o $@ $^ -lsqlite3
 main.o: src/main.cpp
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -c -o $@ $< -lsqlite3
 attack.o: src/attack.cpp src/attack.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 equipment.o: src/equipment.cpp src/equipment.h

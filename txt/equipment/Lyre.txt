@@ -1,3 +1,0 @@
-Name|Lyre
-Price|30
-Weight|2

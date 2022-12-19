@@ -1,3 +1,0 @@
-Name|Vial
-Price|1
-Weight|0

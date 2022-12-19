@@ -1,3 +1,0 @@
-Name|Glassblower's Tools
-Price|30
-Weight|5

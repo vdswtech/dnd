@@ -1,3 +1,0 @@
-Name|Leatherworker's Tools
-Price|5
-Weight|5

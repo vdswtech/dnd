@@ -1,3 +1,0 @@
-Name|Ink (1 ounce bottle)
-Price|10
-Weight|0

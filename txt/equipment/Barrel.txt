@@ -1,3 +1,0 @@
-Name|Barrel
-Price|2
-Weight|70

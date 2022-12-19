@@ -1,3 +1,0 @@
-Name|Herbalism Kit
-Price|5
-Weight|3

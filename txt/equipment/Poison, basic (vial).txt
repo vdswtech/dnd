@@ -1,3 +1,0 @@
-Name|Poison, basic (vial)
-Price|100
-Weight|0

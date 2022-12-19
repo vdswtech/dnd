@@ -1,3 +1,0 @@
-Name|Rope, hempen (50 feet)
-Price|1
-Weight|10

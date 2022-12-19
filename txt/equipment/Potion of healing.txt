@@ -1,3 +1,0 @@
-Name|Potion of healing
-Price|50
-Weight|0.5

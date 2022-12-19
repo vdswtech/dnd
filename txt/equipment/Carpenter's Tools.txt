@@ -1,3 +1,0 @@
-Name|Carpenter's Tools
-Price|8
-Weight|6

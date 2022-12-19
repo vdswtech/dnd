@@ -1,3 +1,0 @@
-Name|Horn
-Price|3
-Weight|2

@@ -1,3 +1,0 @@
-Name|Acid (vial)
-Price|25
-Weight|1

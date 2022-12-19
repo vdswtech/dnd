@@ -1,3 +1,0 @@
-Name|Sling bullets (20)
-Price|0.04
-Weight|1.5

@@ -1,3 +1,0 @@
-Name|Rod
-Price|10
-Weight|2

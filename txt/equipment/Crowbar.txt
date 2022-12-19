@@ -1,3 +1,0 @@
-Name|Crowbar
-Price|2
-Weight|5

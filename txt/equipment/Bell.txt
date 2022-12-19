@@ -1,3 +1,0 @@
-Name|Bell
-Price|1
-Weight|0

@@ -1,3 +1,0 @@
-Name|Bedroll
-Price|1
-Weight|7

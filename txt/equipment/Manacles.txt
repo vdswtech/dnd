@@ -1,3 +1,0 @@
-Name|Manacles
-Price|2
-Weight|6

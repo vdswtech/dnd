@@ -1,3 +1,0 @@
-Name|Clothes, Common
-Price|0.5
-Weight|3

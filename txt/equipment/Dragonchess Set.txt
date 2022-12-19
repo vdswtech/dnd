@@ -1,3 +1,0 @@
-Name|Dragonchess Set
-Price|1
-Weight|0.5
