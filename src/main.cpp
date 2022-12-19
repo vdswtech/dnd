@@ -3,57 +3,45 @@
 #include <fstream>
 #include <iostream>
 #include <ncurses.h>
+#include <sqlite3.h>
 #include <string>
 #include <vector>
 #include "character.h"
 using namespace std;
 namespace fs = std::filesystem;
 
-void load_items(string path, vector <equipment> *items);
-void load_languages(string path, vector <string> *languages);
+vector <string> languages;
+
+void load_languages(sqlite3 *db);
+int callback(void *NotUsed, int argc, char **argv, char **azColName);
 
 int main(int argc, char *argv[])
 {
-	string equipment_path;
-	string languages_path;
-	for (int i=0; i<argc; ++i)
-	{
-		if (strcmp(argv[i], "-e") == 0 || strcmp(argv[i], "--equipment") == 0)
-			equipment_path = argv[i+1];
-		if (strcmp(argv[i], "-l") == 0 || strcmp(argv[i], "--languages") == 0)
-			languages_path = argv[i+1];
-	}
+	sqlite3 *db = NULL;
+	load_languages(db);
 
-	vector <equipment> items;
-	vector <string> languages;
-
-	if (equipment_path != "")
-		load_items(equipment_path, &items);
-	if (languages_path != "")
-		load_languages(languages_path, &languages);
+	for (unsigned int i=0; i<languages.size(); i++)
+		cout << languages.at(i) << endl;
 
 	return 0;
 }
 
-void load_items(string path, vector <equipment> *items)
+void load_languages(sqlite3 *db)
 {
-	equipment tmp;
-	for (const auto & entry : fs::directory_iterator(path))
+	int rc;
+	char *zErrMsg;
+	rc = sqlite3_open("/home/daemoneye/.dnd.db", &db);
+	string sql = "SELECT * FROM 'languages';";
+	if (rc)
 	{
-		tmp.load(entry.path());
-		items->push_back(tmp);
+		cout << "Unable to open database." << endl;
+		return;
 	}
+	rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
 }
 
-void load_languages(string path, vector <string> *languages)
+int callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
-	string language;
-	fstream fin;
-	fin.open(path);
-	while (fin)
-	{
-		getline(fin, language);
-		languages->push_back(language);
-	}
-	fin.close();
+	languages.push_back(argv[0]);
+	return 0;
 }
