@@ -19,8 +19,6 @@ class equipment
 		void set_count(unsigned int count);
 		void set_price(unsigned int price);
 		void set_weight(double weight);
-		void load(string filepath);
-		void save(string filepath);
 		string get_name();
 		unsigned int get_count();
 		unsigned int get_price();
