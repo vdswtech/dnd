@@ -65,8 +65,6 @@ class character
 		void set_hit_die(unsigned int hit_die);
 		void set_proficiency_bonus(unsigned int proficiency_bonus);
 		void set_inspiration(bool inspiration);
-		void load_equipment(string directory);
-		void load_languages(vector <string> *languages);
 		void add_language(string language);
 		void remove_language(string language);
 		void load(string filepath);

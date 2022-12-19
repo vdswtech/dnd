@@ -13,7 +13,7 @@ namespace fs = std::filesystem;
 vector <string> languages;
 
 void load_languages(sqlite3 *db);
-int callback(void *NotUsed, int argc, char **argv, char **azColName);
+int lang_callback(void *NotUsed, int argc, char **argv, char **azColName);
 
 int main(int argc, char *argv[])
 {
@@ -37,10 +37,10 @@ void load_languages(sqlite3 *db)
 		cout << "Unable to open database." << endl;
 		return;
 	}
-	rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+	rc = sqlite3_exec(db, sql.c_str(), lang_callback, 0, &zErrMsg);
 }
 
-int callback(void *NotUsed, int argc, char **argv, char **azColName)
+int lang_callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
 	languages.push_back(argv[0]);
 	return 0;

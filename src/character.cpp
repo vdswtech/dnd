@@ -117,16 +117,6 @@ void character::set_hit_die(unsigned int hit_die)
 	this->hit_die = hit_die;
 }
 
-void character::load_equipment(string directory)
-{
-	equipment tmp;
-	for (const auto & entry : fs::directory_iterator(directory))
-	{
-		tmp.load(entry.path());
-		item_list.push_back(tmp);
-	}
-}
-
 void character::set_proficiency_bonus(unsigned int proficiency_bonus)
 {
 	this->proficiency_bonus = proficiency_bonus;
@@ -135,12 +125,6 @@ void character::set_proficiency_bonus(unsigned int proficiency_bonus)
 void character::set_inspiration(bool inspiration)
 {
 	this->inspiration = inspiration;
-}
-
-void character::load_languages(vector <string> *languages)
-{
-	for (unsigned int i=0; i<languages->size(); i++)
-		this->languages.push_back(languages->at(i));
 }
 
 void character::add_language(string language)
