@@ -46,14 +46,6 @@ void attack::set_modifier_type(char modifier_type)
 	this->modifier_type = modifier_type;
 }
 
-void attack::load(string filepath)
-{
-}
-
-void attack::save(string filepath)
-{
-}
-
 string attack::get_name()
 {
 	return name;

@@ -17,8 +17,6 @@ class features_traits
 		void set_source(string source);
 		void set_source_type(string source_type);
 		void set_description(string description);
-		void load(string filename);
-		void save(string filename);
 		string get_name();
 		string get_source();
 		string get_source_type();

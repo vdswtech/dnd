@@ -28,14 +28,6 @@ void features_traits::set_description(string description)
 	this->description = description;
 }
 
-void features_traits::load(string filename)
-{
-}
-
-void features_traits::save(string filename)
-{
-}
-
 string features_traits::get_name()
 {
 	return name;

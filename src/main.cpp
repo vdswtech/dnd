@@ -38,6 +38,9 @@ void load(sqlite3 *db)
 	}
 	rc = sqlite3_exec(db, lang_sql.c_str(), lang_callback, 0, &zErrMsg);
 	rc = sqlite3_exec(db, equip_sql.c_str(), equip_callback, 0, &zErrMsg);
+
+	for (unsigned int i=0; i<equipment_list.size(); i++)
+		cout << "Name: " << equipment_list[i].get_name() << "; Price: " << equipment_list[i].get_price() << "; Weight: " << equipment_list[i].get_weight() << endl;
 }
 
 int lang_callback(void *NotUsed, int argc, char **argv, char **azColName)
@@ -52,21 +55,10 @@ int equip_callback( void *NotUsed, int argc, char **argv, char **azColName)
 	string tmp_string = "";
 	for (int i=0; i<argc; i=i+3)
 	{
-		if (strcmp(azColName[i], "name") == 0)
-		{
-			tmp_string = argv[i];
-			tmp.set_name(tmp_string);
-		} else {
-			tmp.set_name("");
-		}
-		if (strcmp(azColName[i+1], "price") == 0)
-			tmp.set_price(atoll(argv[i+1]));
-		else
-			tmp.set_price(0);
-		if (strcmp(azColName[i+2], "weight") == 0)
-			tmp.set_weight(atof(argv[i+2]));
-		else
-			tmp.set_price(0);
+		tmp_string = argv[i];
+		tmp.set_name(tmp_string);
+		tmp.set_price(atoll(argv[i+1]));
+		tmp.set_weight(atof(argv[i+2]));
 		equipment_list.push_back(tmp);
 	}
 	return 0;

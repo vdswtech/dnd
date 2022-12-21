@@ -67,8 +67,8 @@ class character
 		void set_inspiration(bool inspiration);
 		void add_language(string language);
 		void remove_language(string language);
-		void load(string filepath);
-		void save(string filepath);
+		void load();
+		void save();
 		string get_name();
 		string get_char_class();
 		string get_background();

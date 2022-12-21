@@ -141,82 +141,12 @@ void character::remove_language(string language)
 	languages = tmp;
 }
 
-void character::load(string filepath)
+void character::load()
 {
-	ifstream fin;
-	fin.open(filepath);
-
-	string tmp = "";
-	getline(fin, tmp);
-	string data[2];
-	data[0] = tmp.substr(0, tmp.find('|'));
-	data[1] = tmp.substr(tmp.find('|')+1, tmp.length());
-
-	if (data[0] == "Name")
-		name = data[1];
-	if (data[0] == "Character class")
-		char_class = data[1];
-	if (data[0] == "Background")
-		background = data[1];
-	if (data[0] == "Race")
-		race = data[1];
-	if (data[0] == "Traits")
-		traits = data[1];
-	if (data[0] == "Ideals")
-		ideals = data[1];
-	if (data[0] == "Bonds")
-		bonds = data[1];
-	if (data[0] == "Flaws")
-		flaws = data[1];
-	if (data[0] == "Level")
-		level = stoi(data[1]);
-	if (data[0] == "Experience")
-		experience = stoi(data[1]);
-	if (data[0] == "Hit points")
-		hit_points = stoi(data[1]);
-	if (data[0] == "Temp hit points")
-		temp_hit_points = stoi(data[1]);
-	if (data[0] == "Armor class")
-		armor_class = stoi(data[1]);
-	if (data[0] == "initiative")
-		initiative = stoi(data[1]);
-	if (data[0] == "speed")
-		speed = stoi(data[1]);
-	if (data[0] == "Hit Die")
-		hit_die = stoi(data[1]);
-	if (data[0] == "Language")
-		languages.push_back(data[1]);
-	
-	fin.close();
 }
 
-void character::save(string filepath)
+void character::save()
 {
-	ofstream fout;
-	fout.open(filepath);
-
-	fout << "Name|" << name << endl;
-	fout << "Character class|" << char_class << endl;
-	fout << "Background|" << background << endl;
-	fout << "Race|" << race << endl;
-	fout << "Traits|" << traits << endl;
-	fout << "Ideals|" << ideals << endl;
-	fout << "Bonds|" << bonds << endl;
-	fout << "Flaws|" << flaws << endl;
-	fout << "Level|" << level << endl;
-	fout << "Experience|" << experience << endl;
-	fout << "Hit points|" << hit_points << endl;
-	fout << "Temp hit points|" << temp_hit_points << endl;
-	fout << "Armor class|" << armor_class << endl;
-	fout << "Initiative|" << initiative << endl;
-	fout << "Speed|" << speed << endl;
-	fout << "Hit die|" << hit_die << endl;
-	for (unsigned int i=0; i<item_list.size(); i++)
-		fout << "Item|" << item_list[i].get_name() << endl;
-	for (unsigned int i=0; i<languages.size(); i++)
-		fout << "Language|" << languages[i] << endl;
-
-	fout.close();
 }
 
 string character::get_name()

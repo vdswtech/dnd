@@ -17,8 +17,6 @@ class skills
 		void set_name(string name);
 		void set_bonus(int bonus);
 		void set_proficency(bool proficency);
-		void load(string filename);
-		void save(string filename);
 		string get_name();
 		int get_bonus();
 		bool get_proficency();

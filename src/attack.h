@@ -24,8 +24,6 @@ class attack
 		void set_die_type(unsigned int die_type);
 		void set_modifier(unsigned int modifier);
 		void set_modifier_type(char modifier_type);
-		void load(string filepath);
-		void save(string filepath);
 		string get_name();
 		string get_atk();
 		string get_damage_type();

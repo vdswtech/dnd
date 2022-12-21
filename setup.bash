@@ -165,3 +165,12 @@ sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) val
 sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Woodcarvers Tools', '1', '5');"
 sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Wooden staff', '5', '4');"
 sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Yew Wand', '10', '1');"
+
+echo "Adding attacks"
+sqlite3 $HOME/.dnd.db "create table if not exists attack (name TEXT, attack TEXT, type TEXT, die_type TEXT, die_count TEXT, modifier TEXT, modifier_type TEXT, UNIQUE(name, attack, type, die_type, die_count, modifier, modifier_type));"
+
+echo "Adding features and traits"
+sqlite3 $HOME/.dnd.db "create table if not exists featuretrait (name TEXT, source TEXT, source_type TEXT, description TEXT, UNIQUE(name, source, source_type, description));"
+
+echo "Adding skills"
+sqlite3 $HOME/.dnd.db "create table if not exists skills(name TEXT, bonus TEXT, proficiency TEXT, UNIQUE(name, bonus, proficiency));"
