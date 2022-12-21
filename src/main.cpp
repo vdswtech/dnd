@@ -28,7 +28,9 @@ void load(sqlite3 *db)
 {
 	int rc;
 	char *zErrMsg;
-	rc = sqlite3_open("/home/daemoneye/.dnd.db", &db);
+	string database_path = getenv("HOME");
+	database_path = database_path + "/.dnd.db";
+	rc = sqlite3_open(database_path.c_str(), &db);
 	string lang_sql = "SELECT * FROM 'languages';";
 	string equip_sql = "SELECT * FROM 'equipment';";
 	if (rc)
