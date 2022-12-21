@@ -18,4 +18,4 @@ To compile, run ```make tests```
 
 # First Run
 
-Be sure to run ```setup.bash``` to generate the sqlite databases for gameplay
+Be sure to run ```setup.bash``` to generate the sqlite databases for gameplay. This script can be used to recreate a default database if required.
