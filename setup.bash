@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function sql_languages() { sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('$1');" ; }
+
+function sql_equipment() { sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('$1', '$2', '$3');" ; }
+
 if ! [ -x "$(command -v sqlite3)" ]
 then
 	echo "Error: sqlite3 is not installed." >&2
@@ -10,167 +14,158 @@ fi
 
 echo "Adding Languages."
 sqlite3 $HOME/.dnd.db "create table if not exists languages (name TEXT, UNIQUE(name));"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Common');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Dwarvish');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Elvish');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Giant');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Gnomish');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Goblin');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Halfling');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Orc');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Abyssal');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Celestial');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Draconic');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Deep Speech');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Infernal');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Primordial');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Sylvan');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Undercommon');"
-sqlite3 $HOME/.dnd.db "insert or ignore into languages (name) values ('Druidic');"
+sql_languages "Common"
+sql_languages "Dwarvish"
+sql_languages "Elvish"
+sql_languages "Giant"
+sql_languages "Gnomish"
+sql_languages "Goblin"
+sql_languages "Halfling"
+sql_languages "Orc"
+sql_languages "Abyssal"
+sql_languages "Celestial"
+sql_languages "Draconic"
+sql_languages "Deep\ Speech"
+sql_languages "Infernal"
+sql_languages "Primordial"
+sql_languages "Sylvan"
+sql_languages "Undercommon"
+sql_languages "Druidic"
 
 echo "Adding equipment"
 sqlite3 $HOME/.dnd.db "create table if not exists equipment (name TEXT, price TEXT, weight TEXT, UNIQUE(name, price, weight));"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Abacus', '2', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Acid (vial)', '25', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Alchemists fire (flask)', '50', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Alchemists supplies', '50', '8');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Antitoxin (vial)', '50', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Arrows (20)', '1', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Backpack', '2', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Bagpipes', '30', '6');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Ball bearings (bag of 1,000)', '1', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Barrel', '2', '70');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Basket', '0.4', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Bedroll', '1', '7');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Bell', '1', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Blanket', '0.5', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Block and tackle', '1', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Blowgun needles (50)', '1', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Book', '25', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Glass Bottle', '2', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Brewers Supplies', '20', '9');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Bucket', '0.05', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Calligraphers Supplies', '10', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Caltrops (bag of 20)', '1', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Candle', '0.01', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Carpenters Tools', '8', '6');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Cartographers Tools', '15', '6');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Case, crossbow bolt', '1', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Case, map or scroll', '1', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Chain (10 feet)', '5', '10');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Chalk (1 piece)', '0.01', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Chest', '5', '25');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Climbers kit', '25', '12');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Clothes, Common', '0.5', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Clothes, Costume', '5', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Clothes, Fine', '15', '6');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Clothes, Travelers', '2', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Cobblers Tools', '5', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Component pouch', '25', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Cooks Utensils', '1', '8');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Crossbow bolts (20)', '1', '1.5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Crowbar', '2', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Crystal', '10', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Dice Set', '0.1', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Disguise Kit', '25', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Dragonchess Set', '1', '0.5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Drum', '6', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Dulcimer', '25', '10');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Fishing tackle', '1', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Flask or tankard', '0.02', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Flute', '2', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Forgery Kit', '15', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Glassblowers Tools', '30', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Grappling hook', '2', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Hammer, sledge', '2', '10');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Hammer', '1', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Healers kit', '5', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Herbalism Kit', '5', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Holy Symbol (Amulet)', '5', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Holy Symbol (Emblem)', '5', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Holy Symbol (Reliquary)', '5', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Holy water (flask)', '25', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Horn', '3', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Hourglass', '25', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Hunting trap', '5', '25');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Ink (1 ounce bottle)', '10', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Ink pen', '0.02', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Jewelers Tools', '25', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Jug or pitcher', '0.02', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Ladder (10-foot)', '0.1', '25');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Lamp', '0.5', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Lantern, bullseye', '10', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Lantern, hooded', '5', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Leatherworkers Tools', '5', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Lock', '10', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Lute', '35', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Lyre', '30', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Magnifying glass', '100', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Manacles', '2', '6');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Masons Tools', '10', '8');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Mess kit', '0.2', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Mirror, steel', '5', '0.5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Navigators Tools', '25', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Oil (flask)', '0.1', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Orb', '20', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Painters Supplies', '10', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Pan flute', '12', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Paper (one sheet)', '0.2', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Parchment (one sheet)', '0.1', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Perfume (vial)', '5', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Pick, miners', '2', '10');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Piton', '0.05', '0.25');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Playing Card Set', '5', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Poison, basic (vial)', '100', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Poisoners Kit', '50', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Pole (10-foot)', '0.05', '7');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Potion of healing', '50', '0.5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Pot, iron', '2', '10');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Potters Tools', '10', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Pouch', '0.5', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Quiver', '1', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Ram, portable', '4', '35');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Rations (1 day)', '0.5', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Robes', '1', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Rod', '10', '2');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Rope, hempen (50 feet)', '1', '10');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Rope, silk (50 feet)', '10', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Sack', '0.01', '0.5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Scale, merchants', '5', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Sealing wax', '0.5', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Shawm', '2', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Shovel', '2', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Signal whistle', '0.05', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Signet ring', '5', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Sling bullets (20)', '0.04', '1.5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Smiths Tools', '20', '8');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Spellbook', '50', '3');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Spikes, iron (10)', '1', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Sprig of mistletoe', '1', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Spyglass', '1000', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Staff', '5', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Tent, two-person', '2', '20');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Thieves Tools', '25', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Three-Dragon Ante Set', '1', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Tinderbox', '0.5', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Tinkers Tools', '50', '10');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Torch', '0.01', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Totem', '1', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Vial', '1', '0');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Viol', '30', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Wand', '10', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Waterskin', '0.2', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Weavers tools', '1', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Whetstone', '0.01', '1');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Woodcarvers Tools', '1', '5');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Wooden staff', '5', '4');"
-sqlite3 $HOME/.dnd.db "insert or ignore into equipment (name, price, weight) values ('Yew Wand', '10', '1');"
-
-echo "Adding attacks"
-sqlite3 $HOME/.dnd.db "create table if not exists attack (name TEXT, attack TEXT, type TEXT, die_type TEXT, die_count TEXT, modifier TEXT, modifier_type TEXT, UNIQUE(name, attack, type, die_type, die_count, modifier, modifier_type));"
-
-echo "Adding features and traits"
-sqlite3 $HOME/.dnd.db "create table if not exists featuretrait (name TEXT, source TEXT, source_type TEXT, description TEXT, UNIQUE(name, source, source_type, description));"
-
-echo "Adding skills"
-sqlite3 $HOME/.dnd.db "create table if not exists skills(name TEXT, bonus TEXT, proficiency TEXT, UNIQUE(name, bonus, proficiency));"
+sql_equipment "Abacus" "2" "2"
+sql_equipment "Acid\ \(vial\)" 25 1
+sql_equipment "Alchemists\ fire\ \(flask\)" 50 1
+sql_equipment "Alchemists\ supplies" 50 8
+sql_equipment "Antitoxin\ \(vial\)" 50 0
+sql_equipment "Arrows\ \(20\)" 1 1
+sql_equipment "Backpack" 2 5
+sql_equipment "Bagpipes" 30 6
+sql_equipment "Ball\ bearings \(bag\ of\ 1000\)" 1 2
+sql_equipment "Barrel" 2 70
+sql_equipment "Basket" 0.4 2
+sql_equipment "Bedroll" 1 7
+sql_equipment "Bell" 1 0
+sql_equipment "Blanket" 0.5 3
+sql_equipment "Block\ and\ tackle" 1 5
+sql_equipment "Blowgun\ needles \(50\)" 1 1
+sql_equipment "Book" 25 5
+sql_equipment "Glass\ Bottle" 2 2
+sql_equipment "Brewers\ Supplies" 20 9
+sql_equipment "Bucket" 0.05 2
+sql_equipment "Calligraphers\ Supplies" 10 5
+sql_equipment "Caltrops \(bag\ of\ 20\)" 1 2
+sql_equipment "Candle" 0.01 0
+sql_equipment "Carpenters\ Tools" 8 6
+sql_equipment "Cartographers\ Tools" 15 6
+sql_equipment "Case\ crossbow\ bolt" 1 1
+sql_equipment "Case\ map\ or\ scroll" 1 1
+sql_equipment "Chain \(10\ feet\)" 5 10
+sql_equipment "Chalk \(1\ piece\)" 0.01 0
+sql_equipment "Chest" 5 25
+sql_equipment "Climbers\ kit" 25 12
+sql_equipment "Clothes\ Common" 0.5 3
+sql_equipment "Clothes\ Costume" 5 4
+sql_equipment "Clothes\ Fine" 15 6
+sql_equipment "Clothes\ Travelers" 2 4
+sql_equipment "Cobblers\ Tools" 5 5
+sql_equipment "Component\ pouch" 25 2
+sql_equipment "Cooks\ Utensils" 1 8
+sql_equipment "Crossbow\ bolts\ \(20\)" 1 1.5
+sql_equipment "Crowbar" 2 5
+sql_equipment "Crystal" 10 1
+sql_equipment "Dice\ Set" 0.1 0
+sql_equipment "Disguise\ Kit" 25 3
+sql_equipment "Dragonchess\ Set" 1 0.5
+sql_equipment "Drum" 6 3
+sql_equipment "Dulcimer" 25 10
+sql_equipment "Fishing\ tackle" 1 4
+sql_equipment "Flask\ or\ tankard" 0.02 1
+sql_equipment "Flute" 2 1
+sql_equipment "Forgery\ Kit" 15 5
+sql_equipment "Glassblowers\ Tools" 30 5
+sql_equipment "Grappling\ hook" 2 4
+sql_equipment "Hammer\ sledge" 2 10
+sql_equipment "Hammer" 1 3
+sql_equipment "Healers\ kit" 5 3
+sql_equipment "Herbalism\ Kit" 5 3
+sql_equipment "Holy\ Symbol\ \(Amulet\)" 5 1
+sql_equipment "Holy\ Symbol\ \(Emblem\)" 5 0
+sql_equipment "Holy\ Symbol\ \(Reliquary\)" 5 2
+sql_equipment "Holy\ water\ \(flask\)" 25 1
+sql_equipment "Horn" 3 2
+sql_equipment "Hourglass" 25 1
+sql_equipment "Hunting\ trap" 5 25
+sql_equipment "Ink\ \(1\ ounce\ bottle\)" 10 0
+sql_equipment "Ink\ pen" 0.02 0
+sql_equipment "Jewelers\ Tools" 25 2
+sql_equipment "Jug\ or\ pitcher" 0.02 4
+sql_equipment "Ladder\ \(10-foot\)" 0.1 25
+sql_equipment "Lamp" 0.5 1
+sql_equipment "Lantern\ bullseye" 10 2
+sql_equipment "Lantern\ hooded" 5 2
+sql_equipment "Leatherworkers\ Tools" 5 5
+sql_equipment "Lock" 10 1
+sql_equipment "Lute" 35 2
+sql_equipment "Lyre" 30 2
+sql_equipment "Magnifying\ glass" 100 0
+sql_equipment "Manacles" 2 6
+sql_equipment "Masons\ Tools" 10 8
+sql_equipment "Mess\ kit" 0.2 1
+sql_equipment "Mirror\ steel" 5 0.5
+sql_equipment "Navigators\ Tools" 25 2
+sql_equipment "Oil\ \(flask\)" 0.1 1
+sql_equipment "Orb" 20 3
+sql_equipment "Painters\ Supplies" 10 5
+sql_equipment "Pan\ flute" 12 2
+sql_equipment "Paper\ \(one\ sheet\)" 0.2 0
+sql_equipment "Parchment\ \(one\ sheet\)" 0.1 0
+sql_equipment "Perfume\ \(vial\)" 5 0
+sql_equipment "Pick\ miners" 2 10
+sql_equipment "Piton" 0.05 0.25
+sql_equipment "Playing\ Card\ Set" 5 0
+sql_equipment "Poison\ basic\ \(vial\)" 100 0
+sql_equipment "Poisoners\ Kit" 50 2
+sql_equipment "Pole\ \(10-foot\)" 0.05 7
+sql_equipment "Potion\ of\ healing" 50 0.5
+sql_equipment "Pot\ iron" 2 10
+sql_equipment "Potters\ Tools" 10 3
+sql_equipment "Pouch" 0.5 1
+sql_equipment "Quiver" 1 1
+sql_equipment "Ram\ portable" 4 35
+sql_equipment "Rations\ \(1 day\)" 0.5 2
+sql_equipment "Robes" 1 4
+sql_equipment "Rod" 10 2
+sql_equipment "Rope\ hempen\ \(50 feet\)" 1 10
+sql_equipment "Rope\ silk\ \(50 feet\)" 10 5
+sql_equipment "Sack" 0.01 0.5
+sql_equipment "Scale\ merchants" 5 3
+sql_equipment "Sealing\ wax" 0.5 0
+sql_equipment "Shawm" 2 1
+sql_equipment "Shovel" 2 5
+sql_equipment "Signal\ whistle" 0.05 0
+sql_equipment "Signet\ ring" 5 0
+sql_equipment "Sling\ bullets\ \(20\)" 0.04 1.5
+sql_equipment "Smiths\ Tools" 20 8
+sql_equipment "Spellbook" 50 3
+sql_equipment "Spikes\ iron\ \(10\)" 1 5
+sql_equipment "Sprig\ of\ mistletoe" 1 0
+sql_equipment "Spyglass" 1000 1
+sql_equipment "Staff" 5 4
+sql_equipment "Tent\ two-person" 2 20
+sql_equipment "Thieves\ Tools" 25 1
+sql_equipment "Three-Dragon\ Ante Set" 1 0
+sql_equipment "Tinderbox" 0.5 1
+sql_equipment "Tinkers\ Tools" 50 10
+sql_equipment "Torch" 0.01 1
+sql_equipment "Totem" 1 0
+sql_equipment "Vial" 1 0
+sql_equipment "Viol" 30 1
+sql_equipment "Wand" 10 1
+sql_equipment "Waterskin" 0.2 5
+sql_equipment "Weavers\ tools" 1 5
+sql_equipment "Whetstone" 0.01 1
+sql_equipment "Woodcarvers\ Tools" 1 5
+sql_equipment "Wooden\ staff" 5 4
+sql_equipment "Yew\ Wand" 10 1
