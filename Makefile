@@ -4,7 +4,7 @@ TESTFLAGS=-lgtest -lgtest_main -pthread
 CXX=g++
  
 all: dnd
-dnd: main.o character.o attack.o equipment.o features_traits.o money.o skills.o
+dnd: main.o character.o attack.o equipment.o features_traits.o money.o skills.o spells.o
 	$(CXX) $(LDFLAGS) -o $@ $^ -lsqlite3
 main.o: src/main.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $< -lsqlite3
@@ -19,6 +19,8 @@ money.o: src/money.cpp src/money.h
 skills.o: src/skills.cpp src/skills.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 character.o: src/character.cpp src/character.h
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+spells.o: src/spells.cpp src/spells.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 test: src/money.cpp src/tests.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(TESTFLAGS)

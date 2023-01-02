@@ -9,6 +9,7 @@
 #include "features_traits.h"
 #include "money.h"
 #include "skills.h"
+#include "spells.h"
 using namespace std;
 namespace fs = std::filesystem;
 

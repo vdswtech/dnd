@@ -21,7 +21,6 @@ class spells
 		void set_range(string range);
 		void set_duration(string duration);
 		void set_level(unsigned int level);
-		void load(string record);
 		string get_name();
 		string get_char_class();
 		string get_cast_time();

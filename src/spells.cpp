@@ -40,10 +40,6 @@ void spells::set_level(unsigned int level)
 	this->level = level;
 }
 
-void spells::load(string record)
-{
-}
-
 string spells::get_name()
 {
 	return name;
