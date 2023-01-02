@@ -11,10 +11,12 @@ namespace fs = std::filesystem;
 
 vector <string> languages;
 vector <equipment> equipment_list;
+vector <spells> spell_list;
 
 void load(sqlite3 *db);
 int lang_callback(void *NotUsed, int argc, char **argv, char **azColName);
 int equip_callback( void *NotUsed, int argc, char **argv, char **azColName);
+int spells_callback( void *NotUsed, int argc, char **argv, char **azColName);
 
 int main(int argc, char *argv[])
 {
@@ -33,6 +35,7 @@ void load(sqlite3 *db)
 	rc = sqlite3_open(database_path.c_str(), &db);
 	string lang_sql = "SELECT * FROM 'languages';";
 	string equip_sql = "SELECT * FROM 'equipment';";
+	string spells_sql = "SELECT * FROM 'spells';";
 	if (rc)
 	{
 		cout << "Unable to open database." << endl;
@@ -40,9 +43,7 @@ void load(sqlite3 *db)
 	}
 	rc = sqlite3_exec(db, lang_sql.c_str(), lang_callback, 0, &zErrMsg);
 	rc = sqlite3_exec(db, equip_sql.c_str(), equip_callback, 0, &zErrMsg);
-
-	for (unsigned int i=0; i<equipment_list.size(); i++)
-		cout << "Name: " << equipment_list[i].get_name() << "; Price: " << equipment_list[i].get_price() << "; Weight: " << equipment_list[i].get_weight() << endl;
+	rc = sqlite3_exec(db, spells_sql.c_str(), spells_callback, 0, &zErrMsg);
 }
 
 int lang_callback(void *NotUsed, int argc, char **argv, char **azColName)
@@ -62,6 +63,22 @@ int equip_callback( void *NotUsed, int argc, char **argv, char **azColName)
 		tmp.set_price(atoll(argv[i+1]));
 		tmp.set_weight(atof(argv[i+2]));
 		equipment_list.push_back(tmp);
+	}
+	return 0;
+}
+
+int spells_callback( void *NotUsed, int argc, char **argv, char **azColName)
+{
+	spells tmp;
+	for (int i=0; i<argc; i=i+6)
+	{
+		tmp.set_name(argv[i]);
+		tmp.set_char_class(argv[i+1]);
+		tmp.set_cast_time(argv[i+2]);
+		tmp.set_range(argv[i+3]);
+		tmp.set_duration(argv[i+4]);
+		tmp.set_level(atoll(argv[i+5]));
+		spell_list.push_back(tmp);
 	}
 	return 0;
 }
