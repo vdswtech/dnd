@@ -1,0 +1,208 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+Mods	character.h	/^struct Mods$/;"	s
+TEST	tests.cpp	/^TEST(money, add_cp)$/;"	f
+TEST	tests.cpp	/^TEST(money, add_ep)$/;"	f
+TEST	tests.cpp	/^TEST(money, add_gp)$/;"	f
+TEST	tests.cpp	/^TEST(money, add_pp)$/;"	f
+TEST	tests.cpp	/^TEST(money, add_sp)$/;"	f
+TEST	tests.cpp	/^TEST(money, cp)$/;"	f
+TEST	tests.cpp	/^TEST(money, ep)$/;"	f
+TEST	tests.cpp	/^TEST(money, gp)$/;"	f
+TEST	tests.cpp	/^TEST(money, pp)$/;"	f
+TEST	tests.cpp	/^TEST(money, sp)$/;"	f
+__attack__	attack.h	/^#define __attack__$/;"	d
+__character__	character.h	/^#define __character__$/;"	d
+__equipment__	equipment.h	/^#define __equipment__$/;"	d
+__features_traits__	features_traits.h	/^#define __features_traits__$/;"	d
+__money__	money.h	/^#define __money__$/;"	d
+__skills__	skills.h	/^#define __skills__$/;"	d
+__spells__	spells.h	/^#define __spells__$/;"	d
+add_coin	money.cpp	/^void money::add_coin(unsigned int cp, unsigned int sp, unsigned int ep, unsigned int gp, unsigne/;"	f	class:money	typeref:typename:void
+add_language	character.cpp	/^void character::add_language(string language)$/;"	f	class:character	typeref:typename:void
+armor_class	character.h	/^		unsigned int armor_class;$/;"	m	class:character	typeref:typename:unsigned int
+atk	attack.h	/^		string atk;$/;"	m	class:attack	typeref:typename:string
+attack	attack.cpp	/^attack::attack()$/;"	f	class:attack
+attack	attack.h	/^class attack$/;"	c
+background	character.h	/^		string background;$/;"	m	class:character	typeref:typename:string
+bonds	character.h	/^		string bonds;$/;"	m	class:character	typeref:typename:string
+bonus	skills.h	/^		int bonus;$/;"	m	class:skills	typeref:typename:int
+cast_time	spells.h	/^		string cast_time;$/;"	m	class:spells	typeref:typename:string
+char_class	character.h	/^		string char_class;$/;"	m	class:character	typeref:typename:string
+char_class	spells.h	/^		string char_class;$/;"	m	class:spells	typeref:typename:string
+character	character.cpp	/^character::character()$/;"	f	class:character
+character	character.h	/^class character$/;"	c
+coin	character.h	/^		money coin;$/;"	m	class:character	typeref:typename:money
+count	equipment.h	/^		unsigned int count;$/;"	m	class:equipment	typeref:typename:unsigned int
+cp	money.h	/^		unsigned int cp;$/;"	m	class:money	typeref:typename:unsigned int
+damage_type	attack.h	/^		string damage_type;$/;"	m	class:attack	typeref:typename:string
+death_saves	character.h	/^		bool death_saves[2][3];$/;"	m	class:character	typeref:typename:bool[2][3]
+description	features_traits.h	/^		string description;$/;"	m	class:features_traits	typeref:typename:string
+die_count	attack.h	/^		unsigned int die_count;$/;"	m	class:attack	typeref:typename:unsigned int
+die_type	attack.h	/^		unsigned int die_type;$/;"	m	class:attack	typeref:typename:unsigned int
+duration	spells.h	/^		string duration;$/;"	m	class:spells	typeref:typename:string
+ep	money.h	/^		unsigned int ep;$/;"	m	class:money	typeref:typename:unsigned int
+equip_callback	main.cpp	/^int equip_callback( void *NotUsed, int argc, char **argv, char **azColName)$/;"	f	typeref:typename:int
+equipment	equipment.cpp	/^equipment::equipment()$/;"	f	class:equipment
+equipment	equipment.h	/^class equipment$/;"	c
+equipment_list	main.cpp	/^vector <equipment> equipment_list;$/;"	v	typeref:typename:vector<equipment>
+experience	character.h	/^		unsigned int experience;$/;"	m	class:character	typeref:typename:unsigned int
+features_traits	features_traits.cpp	/^features_traits::features_traits()$/;"	f	class:features_traits
+features_traits	features_traits.h	/^class features_traits$/;"	c
+flaws	character.h	/^		string flaws;$/;"	m	class:character	typeref:typename:string
+get_armor_class	character.cpp	/^unsigned int character::get_armor_class()$/;"	f	class:character	typeref:typename:unsigned int
+get_atk	attack.cpp	/^string attack::get_atk()$/;"	f	class:attack	typeref:typename:string
+get_background	character.cpp	/^string character::get_background()$/;"	f	class:character	typeref:typename:string
+get_bonds	character.cpp	/^string character::get_bonds()$/;"	f	class:character	typeref:typename:string
+get_bonus	skills.cpp	/^int skills::get_bonus()$/;"	f	class:skills	typeref:typename:int
+get_cast_time	spells.cpp	/^string spells::get_cast_time()$/;"	f	class:spells	typeref:typename:string
+get_char_class	character.cpp	/^string character::get_char_class()$/;"	f	class:character	typeref:typename:string
+get_char_class	spells.cpp	/^string spells::get_char_class()$/;"	f	class:spells	typeref:typename:string
+get_count	equipment.cpp	/^unsigned int equipment::get_count()$/;"	f	class:equipment	typeref:typename:unsigned int
+get_cp	money.cpp	/^unsigned int money::get_cp()$/;"	f	class:money	typeref:typename:unsigned int
+get_damage_type	attack.cpp	/^string attack::get_damage_type()$/;"	f	class:attack	typeref:typename:string
+get_description	features_traits.cpp	/^string features_traits::get_description()$/;"	f	class:features_traits	typeref:typename:string
+get_die_count	attack.cpp	/^unsigned int attack::get_die_count()$/;"	f	class:attack	typeref:typename:unsigned int
+get_die_type	attack.cpp	/^unsigned int attack::get_die_type()$/;"	f	class:attack	typeref:typename:unsigned int
+get_duration	spells.cpp	/^string spells::get_duration()$/;"	f	class:spells	typeref:typename:string
+get_ep	money.cpp	/^unsigned int money::get_ep()$/;"	f	class:money	typeref:typename:unsigned int
+get_equipment_list	character.cpp	/^vector <equipment> *character::get_equipment_list()$/;"	f	class:character	typeref:typename:vector<equipment> *
+get_experience	character.cpp	/^unsigned int character::get_experience()$/;"	f	class:character	typeref:typename:unsigned int
+get_flaws	character.cpp	/^string character::get_flaws()$/;"	f	class:character	typeref:typename:string
+get_gp	money.cpp	/^unsigned int money::get_gp()$/;"	f	class:money	typeref:typename:unsigned int
+get_hit_die	character.cpp	/^unsigned int character::get_hit_die()$/;"	f	class:character	typeref:typename:unsigned int
+get_hit_points	character.cpp	/^unsigned int character::get_hit_points()$/;"	f	class:character	typeref:typename:unsigned int
+get_ideals	character.cpp	/^string character::get_ideals()$/;"	f	class:character	typeref:typename:string
+get_initiative	character.cpp	/^unsigned int character::get_initiative()$/;"	f	class:character	typeref:typename:unsigned int
+get_inspiration	character.cpp	/^bool character::get_inspiration()$/;"	f	class:character	typeref:typename:bool
+get_languages	character.cpp	/^vector <string> *character::get_languages()$/;"	f	class:character	typeref:typename:vector<string> *
+get_level	character.cpp	/^unsigned int character::get_level()$/;"	f	class:character	typeref:typename:unsigned int
+get_level	spells.cpp	/^unsigned int spells::get_level()$/;"	f	class:spells	typeref:typename:unsigned int
+get_modifier	attack.cpp	/^unsigned int attack::get_modifier()$/;"	f	class:attack	typeref:typename:unsigned int
+get_modifier_type	attack.cpp	/^char attack::get_modifier_type()$/;"	f	class:attack	typeref:typename:char
+get_money_count	character.cpp	/^money character::get_money_count()$/;"	f	class:character	typeref:typename:money
+get_name	attack.cpp	/^string attack::get_name()$/;"	f	class:attack	typeref:typename:string
+get_name	character.cpp	/^string character::get_name()$/;"	f	class:character	typeref:typename:string
+get_name	equipment.cpp	/^string equipment::get_name()$/;"	f	class:equipment	typeref:typename:string
+get_name	features_traits.cpp	/^string features_traits::get_name()$/;"	f	class:features_traits	typeref:typename:string
+get_name	skills.cpp	/^string skills::get_name()$/;"	f	class:skills	typeref:typename:string
+get_name	spells.cpp	/^string spells::get_name()$/;"	f	class:spells	typeref:typename:string
+get_pp	money.cpp	/^unsigned int money::get_pp()$/;"	f	class:money	typeref:typename:unsigned int
+get_price	equipment.cpp	/^unsigned int equipment::get_price()$/;"	f	class:equipment	typeref:typename:unsigned int
+get_proficency	skills.cpp	/^bool skills::get_proficency()$/;"	f	class:skills	typeref:typename:bool
+get_proficiency_bonus	character.cpp	/^unsigned int character::get_proficiency_bonus()$/;"	f	class:character	typeref:typename:unsigned int
+get_race	character.cpp	/^string character::get_race()$/;"	f	class:character	typeref:typename:string
+get_range	spells.cpp	/^string spells::get_range()$/;"	f	class:spells	typeref:typename:string
+get_source	features_traits.cpp	/^string features_traits::get_source()$/;"	f	class:features_traits	typeref:typename:string
+get_source_type	features_traits.cpp	/^string features_traits::get_source_type()$/;"	f	class:features_traits	typeref:typename:string
+get_sp	money.cpp	/^unsigned int money::get_sp()$/;"	f	class:money	typeref:typename:unsigned int
+get_speed	character.cpp	/^unsigned int character::get_speed()$/;"	f	class:character	typeref:typename:unsigned int
+get_temp_hit_points	character.cpp	/^unsigned int character::get_temp_hit_points()$/;"	f	class:character	typeref:typename:unsigned int
+get_traits	character.cpp	/^string character::get_traits()$/;"	f	class:character	typeref:typename:string
+get_weight	equipment.cpp	/^double equipment::get_weight()$/;"	f	class:equipment	typeref:typename:double
+gp	money.h	/^		unsigned int gp;$/;"	m	class:money	typeref:typename:unsigned int
+hit_die	character.h	/^		unsigned int hit_die;$/;"	m	class:character	typeref:typename:unsigned int
+hit_points	character.h	/^		unsigned int hit_points;$/;"	m	class:character	typeref:typename:unsigned int
+ideals	character.h	/^		string ideals;$/;"	m	class:character	typeref:typename:string
+initiative	character.h	/^		unsigned int initiative;$/;"	m	class:character	typeref:typename:unsigned int
+inspiration	character.h	/^		bool inspiration;$/;"	m	class:character	typeref:typename:bool
+item_list	character.h	/^		vector <equipment> item_list;$/;"	m	class:character	typeref:typename:vector<equipment>
+lang_callback	main.cpp	/^int lang_callback(void *NotUsed, int argc, char **argv, char **azColName)$/;"	f	typeref:typename:int
+languages	character.h	/^		vector <string> languages;$/;"	m	class:character	typeref:typename:vector<string>
+languages	main.cpp	/^vector <string> languages;$/;"	v	typeref:typename:vector<string>
+level	character.h	/^		unsigned int level;$/;"	m	class:character	typeref:typename:unsigned int
+level	spells.h	/^		unsigned int level;$/;"	m	class:spells	typeref:typename:unsigned int
+load	character.cpp	/^void character::load()$/;"	f	class:character	typeref:typename:void
+load	main.cpp	/^void load(sqlite3 *db)$/;"	f	typeref:typename:void
+load	spells.cpp	/^void spells::load(string record)$/;"	f	class:spells	typeref:typename:void
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
+main	tests.cpp	/^int main(int argc, char **argv)$/;"	f	typeref:typename:int
+modifier	attack.h	/^		unsigned int modifier;$/;"	m	class:attack	typeref:typename:unsigned int
+modifier	character.h	/^	int modifier;$/;"	m	struct:Mods	typeref:typename:int
+modifier_type	attack.h	/^		char modifier_type;$/;"	m	class:attack	typeref:typename:char
+modifiers	character.h	/^		Mods modifiers[6];$/;"	m	class:character	typeref:typename:Mods[6]
+money	money.cpp	/^money::money()$/;"	f	class:money
+money	money.h	/^class money$/;"	c
+name	attack.h	/^		string name;$/;"	m	class:attack	typeref:typename:string
+name	character.h	/^		string name;$/;"	m	class:character	typeref:typename:string
+name	character.h	/^	string name;$/;"	m	struct:Mods	typeref:typename:string
+name	equipment.h	/^		string name;$/;"	m	class:equipment	typeref:typename:string
+name	features_traits.h	/^		string name;$/;"	m	class:features_traits	typeref:typename:string
+name	skills.h	/^		string name;$/;"	m	class:skills	typeref:typename:string
+name	spells.h	/^		string name;$/;"	m	class:spells	typeref:typename:string
+pp	money.h	/^		unsigned int pp;$/;"	m	class:money	typeref:typename:unsigned int
+price	equipment.h	/^		unsigned int price;$/;"	m	class:equipment	typeref:typename:unsigned int
+proficency	skills.h	/^		bool proficency;$/;"	m	class:skills	typeref:typename:bool
+proficiency_bonus	character.h	/^		unsigned int proficiency_bonus;$/;"	m	class:character	typeref:typename:unsigned int
+race	character.h	/^		string race;$/;"	m	class:character	typeref:typename:string
+range	spells.h	/^		string range;$/;"	m	class:spells	typeref:typename:string
+remove_language	character.cpp	/^void character::remove_language(string language)$/;"	f	class:character	typeref:typename:void
+roll	attack.cpp	/^unsigned int attack::roll()$/;"	f	class:attack	typeref:typename:unsigned int
+save	character.cpp	/^void character::save()$/;"	f	class:character	typeref:typename:void
+set_all	money.cpp	/^void money::set_all(unsigned int cp, unsigned int sp, unsigned int ep, unsigned int gp, unsigned/;"	f	class:money	typeref:typename:void
+set_armor_class	character.cpp	/^void character::set_armor_class(unsigned int armor_class)$/;"	f	class:character	typeref:typename:void
+set_atk	attack.cpp	/^void attack::set_atk(string atk)$/;"	f	class:attack	typeref:typename:void
+set_background	character.cpp	/^void character::set_background(string background)$/;"	f	class:character	typeref:typename:void
+set_bonds	character.cpp	/^void character::set_bonds(string bonds)$/;"	f	class:character	typeref:typename:void
+set_bonus	skills.cpp	/^void skills::set_bonus(int bonus)$/;"	f	class:skills	typeref:typename:void
+set_cast_time	spells.cpp	/^void spells::set_cast_time(string cast_time)$/;"	f	class:spells	typeref:typename:void
+set_char_class	character.cpp	/^void character::set_char_class(string char_class)$/;"	f	class:character	typeref:typename:void
+set_char_class	spells.cpp	/^void spells::set_char_class(string char_class)$/;"	f	class:spells	typeref:typename:void
+set_count	equipment.cpp	/^void equipment::set_count(unsigned int count)$/;"	f	class:equipment	typeref:typename:void
+set_cp	money.cpp	/^void money::set_cp(unsigned int cp)$/;"	f	class:money	typeref:typename:void
+set_damage_type	attack.cpp	/^void attack::set_damage_type(string damage_type)$/;"	f	class:attack	typeref:typename:void
+set_description	features_traits.cpp	/^void features_traits::set_description(string description)$/;"	f	class:features_traits	typeref:typename:void
+set_die_count	attack.cpp	/^void attack::set_die_count(unsigned int die_count)$/;"	f	class:attack	typeref:typename:void
+set_die_type	attack.cpp	/^void attack::set_die_type(unsigned int die_type)$/;"	f	class:attack	typeref:typename:void
+set_duration	spells.cpp	/^void spells::set_duration(string duration)$/;"	f	class:spells	typeref:typename:void
+set_ep	money.cpp	/^void money::set_ep(unsigned int ep)$/;"	f	class:money	typeref:typename:void
+set_experience	character.cpp	/^void character::set_experience(unsigned int experience)$/;"	f	class:character	typeref:typename:void
+set_flaws	character.cpp	/^void character::set_flaws(string flaws)$/;"	f	class:character	typeref:typename:void
+set_gp	money.cpp	/^void money::set_gp(unsigned int gp)$/;"	f	class:money	typeref:typename:void
+set_hit_die	character.cpp	/^void character::set_hit_die(unsigned int hit_die)$/;"	f	class:character	typeref:typename:void
+set_hit_points	character.cpp	/^void character::set_hit_points(unsigned int hit_points)$/;"	f	class:character	typeref:typename:void
+set_ideals	character.cpp	/^void character::set_ideals(string ideals)$/;"	f	class:character	typeref:typename:void
+set_initiative	character.cpp	/^void character::set_initiative(unsigned int initiative)$/;"	f	class:character	typeref:typename:void
+set_inspiration	character.cpp	/^void character::set_inspiration(bool inspiration)$/;"	f	class:character	typeref:typename:void
+set_level	character.cpp	/^void character::set_level(unsigned int level)$/;"	f	class:character	typeref:typename:void
+set_level	spells.cpp	/^void spells::set_level(unsigned int level)$/;"	f	class:spells	typeref:typename:void
+set_modifier	attack.cpp	/^void attack::set_modifier(unsigned int modifier)$/;"	f	class:attack	typeref:typename:void
+set_modifier_type	attack.cpp	/^void attack::set_modifier_type(char modifier_type)$/;"	f	class:attack	typeref:typename:void
+set_name	attack.cpp	/^void attack::set_name(string name)$/;"	f	class:attack	typeref:typename:void
+set_name	character.cpp	/^void character::set_name(string name)$/;"	f	class:character	typeref:typename:void
+set_name	equipment.cpp	/^void equipment::set_name(string name)$/;"	f	class:equipment	typeref:typename:void
+set_name	features_traits.cpp	/^void features_traits::set_name(string name)$/;"	f	class:features_traits	typeref:typename:void
+set_name	skills.cpp	/^void skills::set_name(string name)$/;"	f	class:skills	typeref:typename:void
+set_name	spells.cpp	/^void spells::set_name(string name)$/;"	f	class:spells	typeref:typename:void
+set_pp	money.cpp	/^void money::set_pp(unsigned int pp)$/;"	f	class:money	typeref:typename:void
+set_price	equipment.cpp	/^void equipment::set_price(unsigned int price)$/;"	f	class:equipment	typeref:typename:void
+set_proficency	skills.cpp	/^void skills::set_proficency(bool proficency)$/;"	f	class:skills	typeref:typename:void
+set_proficiency_bonus	character.cpp	/^void character::set_proficiency_bonus(unsigned int proficiency_bonus)$/;"	f	class:character	typeref:typename:void
+set_race	character.cpp	/^void character::set_race(string race)$/;"	f	class:character	typeref:typename:void
+set_range	spells.cpp	/^void spells::set_range(string range)$/;"	f	class:spells	typeref:typename:void
+set_source	features_traits.cpp	/^void features_traits::set_source(string source)$/;"	f	class:features_traits	typeref:typename:void
+set_source_type	features_traits.cpp	/^void features_traits::set_source_type(string source_type)$/;"	f	class:features_traits	typeref:typename:void
+set_sp	money.cpp	/^void money::set_sp(unsigned int sp)$/;"	f	class:money	typeref:typename:void
+set_speed	character.cpp	/^void character::set_speed(unsigned int speed)$/;"	f	class:character	typeref:typename:void
+set_temp_hit_points	character.cpp	/^void character::set_temp_hit_points(unsigned int temp_hit_points)$/;"	f	class:character	typeref:typename:void
+set_traits	character.cpp	/^void character::set_traits(string traits)$/;"	f	class:character	typeref:typename:void
+set_weight	equipment.cpp	/^void equipment::set_weight(double weight)$/;"	f	class:equipment	typeref:typename:void
+skills	skills.cpp	/^skills::skills()$/;"	f	class:skills
+skills	skills.h	/^class skills$/;"	c
+source	features_traits.h	/^		string source;$/;"	m	class:features_traits	typeref:typename:string
+source_type	features_traits.h	/^		string source_type;$/;"	m	class:features_traits	typeref:typename:string
+sp	money.h	/^		unsigned int sp;$/;"	m	class:money	typeref:typename:unsigned int
+speed	character.h	/^		unsigned int speed;$/;"	m	class:character	typeref:typename:unsigned int
+spells	spells.cpp	/^spells::spells()$/;"	f	class:spells
+spells	spells.h	/^class spells$/;"	c
+temp_hit_points	character.h	/^		unsigned int temp_hit_points;$/;"	m	class:character	typeref:typename:unsigned int
+traits	character.h	/^		string traits;$/;"	m	class:character	typeref:typename:string
+value	character.h	/^	unsigned int value;$/;"	m	struct:Mods	typeref:typename:unsigned int
+weight	equipment.h	/^		double weight;$/;"	m	class:equipment	typeref:typename:double
