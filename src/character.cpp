@@ -141,8 +141,9 @@ void character::remove_language(string language)
 	languages = tmp;
 }
 
-void character::load()
+void character::load(string data)
 {
+	cout << data << endl;
 }
 
 void character::save()

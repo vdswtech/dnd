@@ -12,11 +12,13 @@ namespace fs = std::filesystem;
 vector <string> languages;
 vector <equipment> equipment_list;
 vector <spells> spell_list;
+vector <character> characters;
 
 void load(sqlite3 *db);
 int lang_callback(void *NotUsed, int argc, char **argv, char **azColName);
-int equip_callback( void *NotUsed, int argc, char **argv, char **azColName);
-int spells_callback( void *NotUsed, int argc, char **argv, char **azColName);
+int equip_callback(void *NotUsed, int argc, char **argv, char **azColName);
+int spells_callback(void *NotUsed, int argc, char **argv, char **azColName);
+int character_callback(void *NotUsed, int argc, char **argv, char **azColName);
 
 int main(int argc, char *argv[])
 {
@@ -36,6 +38,7 @@ void load(sqlite3 *db)
 	string lang_sql = "SELECT * FROM 'languages';";
 	string equip_sql = "SELECT * FROM 'equipment';";
 	string spells_sql = "SELECT * FROM 'spells';";
+	string character_sql = "SELECT * FROM 'character';";
 	if (rc)
 	{
 		cout << "Unable to open database." << endl;
@@ -44,6 +47,7 @@ void load(sqlite3 *db)
 	rc = sqlite3_exec(db, lang_sql.c_str(), lang_callback, 0, &zErrMsg);
 	rc = sqlite3_exec(db, equip_sql.c_str(), equip_callback, 0, &zErrMsg);
 	rc = sqlite3_exec(db, spells_sql.c_str(), spells_callback, 0, &zErrMsg);
+	rc = sqlite3_exec(db, character_sql.c_str(), character_callback, 0, &zErrMsg);
 }
 
 int lang_callback(void *NotUsed, int argc, char **argv, char **azColName)
@@ -52,7 +56,7 @@ int lang_callback(void *NotUsed, int argc, char **argv, char **azColName)
 	return 0;
 }
 
-int equip_callback( void *NotUsed, int argc, char **argv, char **azColName)
+int equip_callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
 	equipment tmp;
 	string tmp_string = "";
@@ -67,7 +71,7 @@ int equip_callback( void *NotUsed, int argc, char **argv, char **azColName)
 	return 0;
 }
 
-int spells_callback( void *NotUsed, int argc, char **argv, char **azColName)
+int spells_callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
 	spells tmp;
 	for (int i=0; i<argc; i=i+6)
@@ -79,6 +83,17 @@ int spells_callback( void *NotUsed, int argc, char **argv, char **azColName)
 		tmp.set_duration(argv[i+4]);
 		tmp.set_level(atoll(argv[i+5]));
 		spell_list.push_back(tmp);
+	}
+	return 0;
+}
+
+int character_callback(void *NotUsed, int argc, char **argv, char **azColName)
+{
+	character tmp;
+	for (int i=0; i<argc; i++)
+	{
+		tmp.load(string(argv[i][0]);
+		characters.push_back(tmp);
 	}
 	return 0;
 }
