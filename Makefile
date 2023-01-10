@@ -22,7 +22,7 @@ character.o: src/character.cpp src/character.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 spells.o: src/spells.cpp src/spells.h
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-test: src/money.cpp src/tests.cpp
+test: src/money.cpp src/spells.cpp src/tests.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(TESTFLAGS)
 
 clean:

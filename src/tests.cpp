@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "money.h"
+#include "spells.h"
 
 TEST(money, cp)
 {
@@ -64,6 +65,42 @@ TEST(money, add_pp)
 	money test;
 	test.add_coin(0, 0, 0, 0, 5);
 	EXPECT_EQ(5, test.get_pp());
+}
+
+TEST(spells, setup_name)
+{
+	spells test;
+	EXPECT_EQ(test.get_name(), "");
+}
+
+TEST(spells, setup_char_class)
+{
+	spells test;
+	EXPECT_EQ(test.get_char_class(), "");
+}
+
+TEST(spells, setup_cast_time)
+{
+	spells test;
+	EXPECT_EQ(test.get_cast_time(), "");
+}
+
+TEST(spells, setup_range)
+{
+	spells test;
+	EXPECT_EQ(test.get_range(), "");
+}
+
+TEST(spells, setup_duration)
+{
+	spells test;
+	EXPECT_EQ(test.get_duration(), "");
+}
+
+TEST(spells, setup_level)
+{
+	spells test;
+	EXPECT_EQ(test.get_level(), 0);
 }
 
 int main(int argc, char **argv)
