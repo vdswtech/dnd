@@ -92,8 +92,6 @@ int character_callback(void *NotUsed, int argc, char **argv, char **azColName)
 	character tmp;
 	for (int i=0; i<argc; i++)
 	{
-		tmp.load(string(argv[i][0]);
-		characters.push_back(tmp);
 	}
 	return 0;
 }
